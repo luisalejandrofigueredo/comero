@@ -3,16 +3,52 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { AddPatientComponent } from './add-patient/add-patient.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { provideHttpClient } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MonitorComponent } from './monitor/monitor.component';
+import { ChangeEstateComponent } from './change-estate/change-estate.component';
 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials:true} };
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomepageComponent,
+    NavigatorComponent,
+    AddPatientComponent,
+    MonitorComponent,
+    ChangeEstateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    SocketIoModule.forRoot(config),
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

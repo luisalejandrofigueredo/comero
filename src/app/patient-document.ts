@@ -1,0 +1,12 @@
+export interface PatientDocument {
+        "id": string,
+        "bloodPressureMax": number,
+        "bloodPressureMin": number,
+        "pulse": number,
+        "_meta": {
+            "lwt": number
+        },
+        "_deleted": boolean,
+        "_attachments": {},
+        "_rev": string
+}

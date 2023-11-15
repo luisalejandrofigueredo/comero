@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Lista de pacientes</h2>
+<mat-dialog-content>
+@for (item of getPatients$|async; track $index) {
+    <p class="paciente">{{item.id}} {{item.bloodPressureMin}} {{item.bloodPressureMax}} {{item.pulse}}</p>
+} @empty {
+    <p>No hay pacientes</p>
+} 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close="true">Cerrar</button>
+</mat-dialog-actions>
