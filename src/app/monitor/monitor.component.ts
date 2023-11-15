@@ -16,7 +16,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   private snackBar= inject(MatSnackBar);
   public getPatients$: Observable<PatientDocument[]> | undefined;
   public getSocket$: Observable<any> | undefined;
-  constructor() { }
+  constructor() { } 
   ngOnInit(): void {
     this.getPatients$ = this.vitalSigns.getPatients();
     this.getSocket$ = this.socket.fromEvent<any>("dataChange");
