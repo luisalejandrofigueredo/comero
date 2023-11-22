@@ -14,15 +14,20 @@ import { MatListModule } from '@angular/material/list';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { provideHttpClient } from '@angular/common/http';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MonitorComponent } from './monitor/monitor.component';
 import { ChangeEstateComponent } from './change-estate/change-estate.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials:true} };
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +35,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     NavigatorComponent,
     AddPatientComponent,
     MonitorComponent,
-    ChangeEstateComponent
+    ChangeEstateComponent,
+    DoctorDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     MatInputModule,
     MatFormFieldModule,
     SocketIoModule.forRoot(config),
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBadgeModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

@@ -5,7 +5,9 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AddPatientComponent } from "../add-patient/add-patient.component";
 import { ChangeEstateComponent } from '../change-estate/change-estate.component';
 import { MonitorComponent } from "../monitor/monitor.component";
+import { DoctorDashboardComponent } from "../doctor-dashboard/doctor-dashboard.component";
 import { MatDialog } from '@angular/material/dialog';
+import {VitalSignsService} from '../vital-signs.service'
 
 
 @Component({
@@ -17,7 +19,7 @@ export class NavigatorComponent {
 
   private breakpointObserver = inject(BreakpointObserver);
   private dialog = inject(MatDialog)
-
+  public vitalSignsService= inject(VitalSignsService);
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -33,6 +35,6 @@ export class NavigatorComponent {
   }
 
   monitorComponent(){
-    let dialogRef = this.dialog.open(MonitorComponent)
+    let dialogRef = this.dialog.open(DoctorDashboardComponent)
   }
 }
