@@ -27,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
 @NgModule({
   declarations: [
