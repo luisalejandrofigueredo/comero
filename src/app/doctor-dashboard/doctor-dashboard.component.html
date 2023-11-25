@@ -3,9 +3,14 @@
   <div class="mat-elevation-z8">
     <table mat-table class="full-width-table" matSort aria-label="Elements">
 
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+        <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
       </ng-container>
 
       <ng-container matColumnDef="bloodPressureMin">
@@ -22,14 +27,20 @@
       <ng-container matColumnDef="pulse">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso</th>
         <td mat-cell *matCellDef="let row">
-          @if (row.pulse>70) {
+          @if (row.pulse>90) {
             <span style="background-color: red;">
               {{row.pulse}}
             </span>
           } 
-          @else {
-            {{row.pulse}}
-          }
+          @else if (row.pulse>80 && row.pulse<=90) {
+            <span style="background-color: yellow;color:black">
+              {{row.pulse}}
+            </span>
+          } @else {
+            <span style="background-color: green;">
+              {{row.pulse}}
+            </span>
+          }   
         </td>
       </ng-container>
 

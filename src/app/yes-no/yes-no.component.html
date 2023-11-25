@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>{{action.action}}</h2>
+<mat-dialog-content>
+ <h2>{{action.description}}</h2>   
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="false">Cancelar</button>
+    <button mat-button (click)="aceptar()" >Aceptar</button>
+</mat-dialog-actions>
+

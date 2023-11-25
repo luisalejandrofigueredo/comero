@@ -2,9 +2,7 @@ import { Component, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AddPatientComponent } from "../add-patient/add-patient.component";
-import { ChangeEstateComponent } from '../change-estate/change-estate.component';
-import { MonitorComponent } from "../monitor/monitor.component";
+import { CrudPacienteComponent } from "../crud-paciente/crud-paciente.component";
 import { DoctorDashboardComponent } from "../doctor-dashboard/doctor-dashboard.component";
 import { MatDialog } from '@angular/material/dialog';
 import {VitalSignsService} from '../vital-signs.service'
@@ -26,15 +24,11 @@ export class NavigatorComponent {
       shareReplay()
     );
 
-  addPatient() {
-    let dialogRef = this.dialog.open(AddPatientComponent)
-  }
-
   changeState() {
-    let dialogRef = this.dialog.open(ChangeEstateComponent)
+    let dialogRef = this.dialog.open(CrudPacienteComponent,{disableClose:true})
   }
 
   monitorComponent(){
-    let dialogRef = this.dialog.open(DoctorDashboardComponent)
+    let dialogRef = this.dialog.open(DoctorDashboardComponent,{disableClose:true})
   }
 }

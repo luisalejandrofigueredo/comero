@@ -24,7 +24,7 @@ export class DoctorDashboardComponent implements AfterViewInit {
   public getSocket$: Observable<any> | undefined;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'bloodPressureMin', 'bloodPressureMax', 'pulse'];
+  displayedColumns = ['firstName','lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse'];
   constructor(public dialogRef: MatDialogRef<DoctorDashboardComponent>) { }
 
   ngAfterViewInit(): void {

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef,MatDialogActions,MatDialogClose,MatDialogTitle,MatDialogContent } from '@angular/material/dialog';
 import { Patient } from '../patient';
 import { Observable } from 'rxjs';
 import { VitalSignsService } from "../vital-signs.service";
@@ -13,16 +13,26 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddPatientComponent {
   profileForm = new FormGroup({
-    firstName: new FormControl<string>('',{nonNullable:true,validators: Validators.required} ),
-    lastName: new FormControl<string>('',{nonNullable:true,validators: Validators.required}),
+    firstName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
+    lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
+    bloodPressureMax: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
+    bloodPressureMin: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
+    pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
   });
   patient$!: Observable<Patient>;
-  private snackBar= inject(MatSnackBar)
-  constructor(public dialogRef: MatDialogRef<AddPatientComponent>,private VitalSings:VitalSignsService){}
-  saveDialog(){
-    const id=this.profileForm.controls.firstName.value+this.profileForm.controls.lastName.value;
-    this.VitalSings.addPatient({id:id,bloodPressureMax:0,bloodPressureMin:0,pulse:0}).subscribe(result=>{
-      this.snackBar.open('Paciente agregado','',{duration:500})
+  private snackBar = inject(MatSnackBar)
+  constructor(public dialogRef: MatDialogRef<AddPatientComponent>, private VitalSings: VitalSignsService) { }
+  saveDialog() {
+    const id = this.profileForm.controls.firstName.value + this.profileForm.controls.lastName.value;
+    this.VitalSings.addPatient({
+      id: id,
+      firstName:this.profileForm.controls.firstName.value,
+      lastName:this.profileForm.controls.lastName.value,
+      bloodPressureMax: this.profileForm.controls.bloodPressureMax.value,
+      bloodPressureMin: this.profileForm.controls.bloodPressureMin.value,
+      pulse: this.profileForm.controls.pulse.value
+    }).subscribe(result => {
+      this.snackBar.open('Paciente agregado', '', { duration: 500 })
       this.dialogRef.close();
     })
   }
