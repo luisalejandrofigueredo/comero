@@ -15,8 +15,8 @@ export class AddPatientComponent {
   profileForm = new FormGroup({
     firstName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
-    bloodPressureMax: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
-    bloodPressureMin: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
+    bloodPressureMin: new FormControl<number>(100, { nonNullable: true }),
+    bloodPressureMax: new FormControl<number>(150, { nonNullable: true}),
     pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
   });
   patient$!: Observable<Patient>;

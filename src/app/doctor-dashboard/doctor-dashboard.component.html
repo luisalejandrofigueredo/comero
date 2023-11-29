@@ -14,42 +14,50 @@
       </ng-container>
 
       <ng-container matColumnDef="bloodPressureMin">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Minima</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Minima<span style="padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
         <td mat-cell *matCellDef="let row">{{row.bloodPressureMin}}</td>
       </ng-container>
 
 
       <ng-container matColumnDef="bloodPressureMax">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Maxima</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Maxima<span style="padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
         <td mat-cell *matCellDef="let row">{{row.bloodPressureMax}}</td>
       </ng-container>
 
       <ng-container matColumnDef="pulse">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<mat-icon style="padding-left:10px ;">favorite</mat-icon> </th>
         <td mat-cell *matCellDef="let row">
           @if (row.pulse>90) {
-            <span style="background-color: red;">
-              {{row.pulse}}
+          <span style="background-color: red;">
+            {{row.pulse}}
+          </span>
+          <span class="material-symbols-outlined">
+            pulse_alert
+          </span>
+          }
+          @else if (row.pulse>80 && row.pulse<=90) { <span style="background-color: yellow;color:black">
+            {{row.pulse}}
             </span>
-          } 
-          @else if (row.pulse>80 && row.pulse<=90) {
-            <span style="background-color: yellow;color:black">
-              {{row.pulse}}
-            </span>
-          } @else {
+            } @else {
             <span style="background-color: green;">
               {{row.pulse}}
             </span>
-          }   
+            }
         </td>
       </ng-container>
+
+      <ng-container matColumnDef="zoom">
+        <th mat-header-cell *matHeaderCellDef >Zoom</th>
+        <td mat-cell *matCellDef="let row"><button mat-icon-button (click)="zoom(row.id)" ><mat-icon>zoom_in</mat-icon></button></td>
+      </ng-container>
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator  #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]" >
+    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]">
     </mat-paginator>
   </div>
 </mat-dialog-content>

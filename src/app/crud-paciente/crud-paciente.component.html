@@ -14,18 +14,18 @@
     </ng-container>
 
     <ng-container matColumnDef="bloodPressureMin">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Minima</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Minima<span style="padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
       <td mat-cell *matCellDef="let row">{{row.bloodPressureMin}}</td>
     </ng-container>
 
 
     <ng-container matColumnDef="bloodPressureMax">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Maxima</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Maxima<span style="padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
       <td mat-cell *matCellDef="let row">{{row.bloodPressureMax}}</td>
     </ng-container>
 
     <ng-container matColumnDef="pulse">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<mat-icon style="padding-left:10px;">favorite</mat-icon></th>
       <td mat-cell *matCellDef="let row">
         @if (row.pulse>90) {
         <span style="background-color: red;">
@@ -43,11 +43,11 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
       <td mat-cell *matCellDef="let row"><mat-icon (click)="editPaciente(row.id)">editar</mat-icon></td>
     </ng-container>
     <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrar</th>
+      <th mat-header-cell *matHeaderCellDef>Borrar</th>
       <td mat-cell *matCellDef="let row"><mat-icon color="warn" (click)="deletePaciente(row.id)" >delete</mat-icon></td>
     </ng-container>
 

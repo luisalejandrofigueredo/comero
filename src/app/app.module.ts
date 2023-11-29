@@ -29,6 +29,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { CrudPacienteComponent } from './crud-paciente/crud-paciente.component';
 import { EditPacienteComponent } from './edit-paciente/edit-paciente.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSliderModule} from '@angular/material/slider';
+import { ZoomComponent } from './zoom/zoom.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
@@ -42,7 +44,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     ChangeEstateComponent,
     DoctorDashboardComponent,
     CrudPacienteComponent,
-    EditPacienteComponent
+    EditPacienteComponent,
+    ZoomComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSliderModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
