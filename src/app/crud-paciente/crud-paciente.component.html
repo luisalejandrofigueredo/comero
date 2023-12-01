@@ -14,18 +14,18 @@
     </ng-container>
 
     <ng-container matColumnDef="bloodPressureMin">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Minima<span style="padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Minima<span style="color: red;padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
       <td mat-cell *matCellDef="let row">{{row.bloodPressureMin}}</td>
     </ng-container>
 
 
     <ng-container matColumnDef="bloodPressureMax">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Maxima<span style="padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Maxima<span style="color: red; padding-left: 10px;"><span class="material-symbols-outlined">blood_pressure</span></span></th>
       <td mat-cell *matCellDef="let row">{{row.bloodPressureMax}}</td>
     </ng-container>
 
     <ng-container matColumnDef="pulse">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<mat-icon style="padding-left:10px;">favorite</mat-icon></th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<mat-icon style="color: red; padding-left:10px;">favorite</mat-icon></th>
       <td mat-cell *matCellDef="let row">
         @if (row.pulse>90) {
         <span style="background-color: red;">

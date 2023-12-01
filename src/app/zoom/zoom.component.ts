@@ -50,13 +50,13 @@ export class ZoomComponent implements OnDestroy {
             bloodPressureMin: document.documentData.bloodPressureMin
           });
           if (document.documentData.pulse !== document.previousDocumentData.pulse) {
-            this.matSnackBar.open(`El pulso ha variado en:${document.documentData.pulse - document.previousDocumentData.pulse}`, '', { duration: 500 })
+            this.matSnackBar.open(`El pulso ha variado en:${document.documentData.pulse - document.previousDocumentData.pulse}`, '', { duration: 1000 })
           }
           if (document.documentData.bloodPressureMax !== document.previousDocumentData.bloodPressureMax) {
-            this.matSnackBar.open(`La maxima ha variado en:${document.documentData.bloodPressureMax - document.previousDocumentData.bloodPressureMax}`, '', { duration: 500 })
+            this.matSnackBar.open(`La maxima ha variado en:${document.documentData.bloodPressureMax - document.previousDocumentData.bloodPressureMax}`, '', { duration: 1000 })
           }
           if (document.documentData.bloodPressureMin !== document.previousDocumentData.bloodPressureMin) {
-            this.matSnackBar.open(`La minima ha variado en:${document.documentData.bloodPressureMin - document.previousDocumentData.bloodPressureMin}`, '', { duration: 500 })
+            this.matSnackBar.open(`La minima ha variado en:${document.documentData.bloodPressureMin - document.previousDocumentData.bloodPressureMin}`, '', { duration: 1000 })
           }
         }
       }

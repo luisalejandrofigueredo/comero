@@ -33,7 +33,6 @@ export class AddPatientComponent {
       pulse: this.profileForm.controls.pulse.value
     }).subscribe(result => {
       this.snackBar.open('Paciente agregado', '', { duration: 500 })
-      this.dialogRef.close();
-    })
+      this.dialogRef.close();},(_next:any)=>{},()=>{this.snackBar.open('Error al agregar paciente', '', { duration: 500 })});
   }
 }
