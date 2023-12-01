@@ -14,12 +14,21 @@
                 <input matSliderStartThumb formControlName="bloodPressureMin">
                 <input matSliderEndThumb formControlName="bloodPressureMax">
             </mat-slider>
-            <span class="material-symbols-outlined">blood_pressure</span>
-            <mat-form-field>
-                <mat-label>Pulso</mat-label>
-                <input matInput type="number" formControlName="pulse">
-                <mat-icon matSuffix>favorite</mat-icon>
-            </mat-form-field>
+            @if (this.profileForm.controls.bloodPressureMin.dirty || this.profileForm.controls.bloodPressureMax.dirty) {
+                <span style="color: red;" class="material-symbols-outlined">blood_pressure</span>
+            } @else {
+                <span class="material-symbols-outlined">blood_pressure</span>
+            }
+            <div class="row">
+                <mat-slider min="0" max="200" step="1" discrete>
+                    <input matSliderThumb formControlName="pulse">
+                </mat-slider>
+                @if (this.profileForm.controls.pulse.dirty) {
+                    <mat-icon color="warn">favorite</mat-icon>
+                } @else {
+                    <mat-icon>favorite</mat-icon>
+                }
+            </div>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">

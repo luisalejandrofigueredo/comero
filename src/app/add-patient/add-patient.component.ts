@@ -17,7 +17,7 @@ export class AddPatientComponent {
     lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     bloodPressureMin: new FormControl<number>(100, { nonNullable: true }),
     bloodPressureMax: new FormControl<number>(150, { nonNullable: true}),
-    pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
+    pulse: new FormControl<number>(50, { nonNullable: true, validators: Validators.required })
   });
   patient$!: Observable<Patient>;
   private snackBar = inject(MatSnackBar)
