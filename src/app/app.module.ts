@@ -12,7 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AddPatientComponent } from './add-patient/add-patient.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,9 +28,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CrudPacienteComponent } from './crud-paciente/crud-paciente.component';
 import { EditPacienteComponent } from './edit-paciente/edit-paciente.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTabsModule } from "@angular/material/tabs";
 import { ZoomComponent } from './zoom/zoom.component';
+import { MedicamentosComponent } from './medicamentos/medicamentos.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
@@ -45,7 +49,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     DoctorDashboardComponent,
     CrudPacienteComponent,
     EditPacienteComponent,
-    ZoomComponent
+    ZoomComponent,
+    MedicamentosComponent,
+    AddMedicamentosComponent
   ],
   imports: [
     BrowserModule,
@@ -67,9 +73,13 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatPaginatorModule,
     MatSortModule,
     MatTooltipModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTabsModule,
+    MatChipsModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), 
+  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

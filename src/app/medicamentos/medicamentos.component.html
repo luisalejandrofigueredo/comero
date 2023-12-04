@@ -1,0 +1,16 @@
+@defer () {
+<mat-chip-listbox>
+    @for (item of medicamentos; track $index) {
+    <mat-chip color="accent" (removed)="remove(item.id)"><span class="material-symbols-outlined">
+            fluid
+        </span>{{item.name}} {{item.canty}}
+        <button matChipRemove [attr.aria-label]='"delete"'>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-chip>
+    }
+</mat-chip-listbox>
+}
+@loading {
+<p>Cargando los medicamentos</p>
+}

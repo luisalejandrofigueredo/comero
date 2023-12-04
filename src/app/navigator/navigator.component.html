@@ -3,7 +3,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="changeState()">Cambiar signos vitales</a>
+      <a mat-list-item routerLink="/crudPaciente">Cambiar signos vitales</a>
       <a mat-list-item (click)="monitorComponent()">Monitor</a>
     </mat-nav-list>
   </mat-sidenav>

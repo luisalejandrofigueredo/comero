@@ -6,6 +6,7 @@ import { Patient } from '../patient';
 import { Observable } from 'rxjs';
 import { VitalSignsService } from "../vital-signs.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
@@ -20,8 +21,9 @@ export class AddPatientComponent {
     pulse: new FormControl<number>(50, { nonNullable: true, validators: Validators.required })
   });
   patient$!: Observable<Patient>;
-  private snackBar = inject(MatSnackBar)
-  constructor(public dialogRef: MatDialogRef<AddPatientComponent>, private VitalSings: VitalSignsService) { }
+  private snackBar = inject(MatSnackBar);
+  private router=inject(Router);
+  constructor(private VitalSings: VitalSignsService) { }
   saveDialog() {
     const id = this.profileForm.controls.firstName.value + this.profileForm.controls.lastName.value;
     this.VitalSings.addPatient({
@@ -31,8 +33,11 @@ export class AddPatientComponent {
       bloodPressureMax: this.profileForm.controls.bloodPressureMax.value,
       bloodPressureMin: this.profileForm.controls.bloodPressureMin.value,
       pulse: this.profileForm.controls.pulse.value
-    }).subscribe(result => {
-      this.snackBar.open('Paciente agregado', '', { duration: 500 })
-      this.dialogRef.close();},(_next:any)=>{},()=>{this.snackBar.open('Error al agregar paciente', '', { duration: 500 })});
+    }).subscribe({next: _result => {this.snackBar.open('Paciente agregado', '', { duration: 500 })
+    this.router.navigate(['crudPaciente'])},error: error=>{this.snackBar.open('Error al agregar paciente', '', { duration: 500 }),this.router.navigate(['crudPaciente'])}})
+  }
+
+  closeDialog(){
+    this.router.navigate(['crudPaciente'])
   }
 }

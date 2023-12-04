@@ -1,0 +1,18 @@
+<form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
+    <mat-form-field>
+        <mat-label>Medicamento</mat-label>
+        <input matInput formControlName="drug">
+        @if (profileForm.controls.drug.hasError('required')) {
+        <mat-error>Medicamento requerido</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Cantidad</mat-label>
+        <input matInput formControlName="canty">
+        @if (profileForm.controls.canty.hasError('required')) {
+        <mat-error>Cantidad requerida</mat-error>
+        }
+    </mat-form-field>
+    <button mat-button (click)="closeDialog()">Cancelar</button>
+    <button mat-button type="submit" [disabled]="!profileForm.valid">Agregar</button>
+</form>

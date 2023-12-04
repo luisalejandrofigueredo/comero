@@ -4,7 +4,6 @@ import { VitalSignsService } from '../vital-signs.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Socket } from 'ngx-socket-io';
 import { Observable, Subscription } from 'rxjs';
-import { Patient } from '../patient';
 import { PatientDocument } from '../patient-document';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -37,7 +36,7 @@ export class ZoomComponent implements OnDestroy {
         pulse: patient.pulse,
         bloodPressureMax: patient.bloodPressureMax,
         bloodPressureMin: patient.bloodPressureMin
-      })
+      });
     })
     this.subScriptionFromUpdate$=this.getFromUpdate$.subscribe((document: any) => {
       if (this.data === document.documentData.id) {

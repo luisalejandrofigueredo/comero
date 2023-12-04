@@ -4,12 +4,13 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { VitalSignsService } from '../vital-signs.service';
 import { DoctorDashboardDataSource, DoctorDashboardItem } from '../doctor-dashboard/doctor-dashboard-datasource';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddPatientComponent } from "../add-patient/add-patient.component";
 import { EditPacienteComponent } from "../edit-paciente/edit-paciente.component";
 import { YesNOComponent } from "../yes-no/yes-no.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PatientDocument } from '../patient-document';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-crud-paciente',
   templateUrl: './crud-paciente.component.html',
@@ -22,11 +23,12 @@ export class CrudPacienteComponent implements AfterViewInit {
   private vitalSingsService = inject(VitalSignsService)
   private addPacienteDialog = inject(MatDialog);
   private matSnackBar = inject(MatSnackBar);
+  private router=inject(Router);
   public dataSource = new DoctorDashboardDataSource([]);
   private changeDetectorRefs = inject(ChangeDetectorRef);
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['firstName', 'lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse', 'edit', 'delete'];
-  constructor(public dialogRef: MatDialogRef<CrudPacienteComponent>) { }
+  constructor() { }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -42,10 +44,6 @@ export class CrudPacienteComponent implements AfterViewInit {
     })
   }
 
-  close() {
-    this.dialogRef.close();
-  }
-
   refreshDataSource(pacientes: PatientDocument[]) {
     this.paginator._intl = new MatPaginatorIntl();
     this.paginator._intl.itemsPerPageLabel = "Items por página"
@@ -56,21 +54,11 @@ export class CrudPacienteComponent implements AfterViewInit {
   }
 
   addPaciente() {
-    this.addPacienteDialog.open(AddPatientComponent, { disableClose: true }).afterClosed().subscribe(
-      (_next) => {
-        this.vitalSingsService.getPatients().subscribe(pacientes => {
-          this.refreshDataSource(pacientes);
-        })
-      }
-    );
+    this.router.navigate(['addPatient']);
   }
 
   editPaciente(id: string) {
-    this.addPacienteDialog.open(EditPacienteComponent, { disableClose: true, data: id }).afterClosed().subscribe((_next) => {
-      this.vitalSingsService.getPatients().subscribe(pacientes => {
-        this.refreshDataSource(pacientes);
-      })
-    })
+    this.router.navigate(['/editPaciente',id]);
   }
 
   deletePaciente(id: string) {

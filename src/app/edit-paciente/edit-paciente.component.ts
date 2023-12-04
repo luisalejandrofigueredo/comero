@@ -1,17 +1,21 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { VitalSignsService } from '../vital-signs.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Patient } from '../patient';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-edit-paciente',
   templateUrl: './edit-paciente.component.html',
   styleUrl: './edit-paciente.component.css'
 })
-export class EditPacienteComponent implements OnInit {
-  matSnackBar= inject(MatSnackBar)
+export class EditPacienteComponent implements OnInit, OnDestroy {
+  matSnackBar = inject(MatSnackBar)
+  private router = inject(Router);
+  public uuid: string = "";
+  private route$: any;
   profileForm = new FormGroup({
     firstName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
@@ -19,25 +23,41 @@ export class EditPacienteComponent implements OnInit {
     bloodPressureMin: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
     pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
   });
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string, public dialogRef: MatDialogRef<EditPacienteComponent>, private VitalSings: VitalSignsService) { }
+  constructor(private route: ActivatedRoute, private VitalSings: VitalSignsService) { }
   ngOnInit(): void {
-    this.profileForm.controls.firstName.disable();
-    this.profileForm.controls.lastName.disable();
-    this.VitalSings.getPatient(this.data).subscribe((paciente: Patient) => {
-      this.profileForm.patchValue({ firstName: paciente.firstName, lastName: paciente.lastName, bloodPressureMax: paciente.bloodPressureMax, bloodPressureMin: paciente.bloodPressureMin, pulse: paciente.pulse })
+    this.route$ = this.route.params.subscribe((value: Params) => {
+      this.uuid = value['id'];
+      this.profileForm.controls.firstName.disable();
+      this.profileForm.controls.lastName.disable();
+      this.VitalSings.getPatient(this.uuid).subscribe((paciente: Patient) => {
+        this.profileForm.patchValue({ firstName: paciente.firstName, lastName: paciente.lastName, bloodPressureMax: paciente.bloodPressureMax, bloodPressureMin: paciente.bloodPressureMin, pulse: paciente.pulse })
+      });
     })
+  }
+
+  closeDialog() {
+    this.router.navigate(['crudPaciente']);
   }
 
   saveDialog() {
-    this.VitalSings.putPatient({id:this.data,
-      bloodPressureMax:this.profileForm.controls.bloodPressureMax.value,
-      bloodPressureMin:this.profileForm.controls.bloodPressureMin.value,
-      pulse:this.profileForm.controls.pulse.value
-    }).subscribe((next)=>{
-      this.matSnackBar.open('Signos vitales actualizado','',{duration:500})
-      this.dialogRef.close();
+    this.VitalSings.putPatient({
+      id: this.uuid,
+      bloodPressureMax: this.profileForm.controls.bloodPressureMax.value,
+      bloodPressureMin: this.profileForm.controls.bloodPressureMin.value,
+      pulse: this.profileForm.controls.pulse.value
+    }).subscribe((next) => {
+      this.matSnackBar.open('Signos vitales actualizado', '', { duration: 500 })
+      this.router.navigate(['crudPaciente']);
     })
-
   }
+
+  agregarMedicamentos() {
+    this.router.navigate(['addMedicamentos',this.uuid]);
+  }
+
+  ngOnDestroy(): void {
+    this.route$.unsubscribe()
+  }
+
 
 }
