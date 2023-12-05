@@ -1,6 +1,6 @@
 @defer () {
 <mat-chip-listbox>
-    @for (item of medicamentos; track $index) {
+    @for (item of medicamentos; track item.item) {
     <mat-chip color="accent" (removed)="remove(item.id,item.name)"><span class="material-symbols-outlined">
             fluid
         </span>{{item.name}} {{item.canty}}

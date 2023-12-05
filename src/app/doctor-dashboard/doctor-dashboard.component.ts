@@ -79,7 +79,7 @@ export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
   }
 
   zoom(id:string){
-    this.madDialog.open(ZoomComponent,{disableClose:true,data:id})
+    this.madDialog.open(ZoomComponent,{role:'dialog' ,disableClose:true,data:id})
   }
 
   ngOnDestroy(): void {

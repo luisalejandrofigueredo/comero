@@ -32,7 +32,7 @@
         </div>
         <mat-tab-group>
             <mat-tab label="Medicamentos por goteo">
-                <button mat-mini-fab type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon></button>
+                <button mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento" type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon></button>
                 <app-medicamentos [uuid]="this.uuid"></app-medicamentos>
             </mat-tab>
         </mat-tab-group>

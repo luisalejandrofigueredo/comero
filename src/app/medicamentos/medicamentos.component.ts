@@ -31,7 +31,7 @@ export class MedicamentosComponent implements OnInit,OnChanges{
   }
 
   remove(id:string,name:string){
-    this.medicamentosDialog.open(YesNOComponent, { role:'alertdialog',enterAnimationDuration:500,disableClose: true, data: { action: 'Borrar', description: `Desea borrar al medicamento ${name}` } }).afterClosed().subscribe((respuesta: boolean) => {
+    this.medicamentosDialog.open(YesNOComponent, { closeOnNavigation:false,role:'alertdialog',enterAnimationDuration:500,disableClose: false, data: { action: 'Borrar', description: `Desea borrar al medicamento ${name}` } }).afterClosed().subscribe((respuesta: boolean) => {
       if (respuesta === true) {
         this.medicamentosService.deleteMedicamento(id).subscribe({next: document=>{
           this.medicamentosService.getMedicamentos(this.uuid).subscribe((medicamentos: MedicamentosDocument[]) => {

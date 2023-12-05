@@ -78,7 +78,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatChipsModule
   ],
   providers: [provideHttpClient(), 
-  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true}}
 ],
   bootstrap: [AppComponent]
 })

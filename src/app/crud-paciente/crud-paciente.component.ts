@@ -4,8 +4,6 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { VitalSignsService } from '../vital-signs.service';
 import { DoctorDashboardDataSource, DoctorDashboardItem } from '../doctor-dashboard/doctor-dashboard-datasource';
-import { AddPatientComponent } from "../add-patient/add-patient.component";
-import { EditPacienteComponent } from "../edit-paciente/edit-paciente.component";
 import { YesNOComponent } from "../yes-no/yes-no.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PatientDocument } from '../patient-document';
@@ -25,7 +23,6 @@ export class CrudPacienteComponent implements AfterViewInit {
   private matSnackBar = inject(MatSnackBar);
   private router=inject(Router);
   public dataSource = new DoctorDashboardDataSource([]);
-  private changeDetectorRefs = inject(ChangeDetectorRef);
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['firstName', 'lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse', 'edit', 'delete'];
   constructor() { }
@@ -63,7 +60,7 @@ export class CrudPacienteComponent implements AfterViewInit {
 
   deletePaciente(id: string) {
     this.vitalSingsService.getPatient(id).subscribe((paciente) => {
-      this.addPacienteDialog.open(YesNOComponent, { role:'alertdialog',enterAnimationDuration:500,disableClose: true, data: { action: 'Borrar', description: `Desea borrar a ${paciente.firstName} ${paciente.lastName}` } }).afterClosed().subscribe((respuesta: boolean) => {
+      this.addPacienteDialog.open(YesNOComponent, { enterAnimationDuration:500,disableClose: true, data: { action: 'Borrar', description: `Desea borrar a ${paciente.firstName} ${paciente.lastName}` } }).afterClosed().subscribe((respuesta: boolean) => {
         if (respuesta === true) {
           this.vitalSingsService.deletePatient(id).subscribe((ok) => {
             this.matSnackBar.open('Paciente borrado', '', { duration: 500 });
