@@ -33,7 +33,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from "@angular/material/tabs";
 import { ZoomComponent } from './zoom/zoom.component';
 import { MedicamentosComponent } from './medicamentos/medicamentos.component';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from "@angular/material/select";
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 
 
@@ -75,11 +76,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatTooltipModule,
     MatSliderModule,
     MatTabsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSelectModule
   ],
-  providers: [provideHttpClient(), 
-  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true}}
-],
+  providers: [provideHttpClient(),
+  { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

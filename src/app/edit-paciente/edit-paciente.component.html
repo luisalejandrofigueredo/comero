@@ -31,14 +31,16 @@
             </div>
         </div>
         <mat-tab-group>
-            <mat-tab label="Medicamentos por goteo">
-                <button mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento" type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon></button>
+            <mat-tab label="Medicamentos">
+                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento" type="button" (click)="agregarMedicamentos()"><span style="width: 40px;" class="material-symbols-outlined">
+                    prescriptions
+                </span></button>
                 <app-medicamentos [uuid]="this.uuid"></app-medicamentos>
             </mat-tab>
         </mat-tab-group>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button  (click)="closeDialog()">Cancelar</button>
+        <button mat-button type="button" (click)="closeDialog()">Cancelar</button>
         <button mat-button type="submit" [disabled]="!profileForm.valid">Cambiar</button>
     </mat-dialog-actions>
 </form>

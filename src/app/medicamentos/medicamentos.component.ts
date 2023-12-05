@@ -19,14 +19,12 @@ export class MedicamentosComponent implements OnInit,OnChanges{
   ngOnInit(): void {
     this.medicamentosService.getMedicamentos(this.uuid).subscribe((medicamentos: MedicamentosDocument[]) => {
       this.medicamentos = medicamentos;
-      console.log('medicamentos',this.uuid)
     })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.medicamentosService.getMedicamentos(this.uuid).subscribe((medicamentos: MedicamentosDocument[]) => {
       this.medicamentos = medicamentos;
-      console.log('medicamentos',this.uuid)
     })  
   }
 

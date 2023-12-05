@@ -60,10 +60,10 @@ export class CrudPacienteComponent implements AfterViewInit {
 
   deletePaciente(id: string) {
     this.vitalSingsService.getPatient(id).subscribe((paciente) => {
-      this.addPacienteDialog.open(YesNOComponent, { enterAnimationDuration:500,disableClose: true, data: { action: 'Borrar', description: `Desea borrar a ${paciente.firstName} ${paciente.lastName}` } }).afterClosed().subscribe((respuesta: boolean) => {
+      this.addPacienteDialog.open(YesNOComponent, { enterAnimationDuration:500,disableClose: true, data: { action: 'Egresar', description: `Desea egresar a ${paciente.firstName} ${paciente.lastName}` } }).afterClosed().subscribe((respuesta: boolean) => {
         if (respuesta === true) {
           this.vitalSingsService.deletePatient(id).subscribe((ok) => {
-            this.matSnackBar.open('Paciente borrado', '', { duration: 500 });
+            this.matSnackBar.open('Paciente egresado', '', { duration: 500 });
             this.vitalSingsService.getPatients().subscribe(pacientes => {
               this.refreshDataSource(pacientes);
             })

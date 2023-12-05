@@ -1,9 +1,34 @@
 @defer () {
 <mat-chip-listbox>
     @for (item of medicamentos; track item.item) {
-    <mat-chip color="accent" (removed)="remove(item.id,item.name)"><span class="material-symbols-outlined">
+    <mat-chip color="accent" (removed)="remove(item.id,item.name)">
+        @switch (item.type) {
+        @case ("1") {
+        <span class="material-symbols-outlined">
+            pill
+        </span>
+        }
+        @case ("2") {
+        <span class="material-symbols-outlined">
             fluid
-        </span>{{item.name}} {{item.canty}}
+        </span>
+        }
+        @case ("3") {
+        <span class="material-symbols-outlined">
+            fluid_med
+        </span>}
+        @case ("4") {
+        <span class="material-symbols-outlined">
+            syringe
+        </span>
+        }
+        @case ("5") {
+        <span class="material-symbols-outlined">
+            medication_liquid
+        </span>
+        }
+        }
+        {{item.name}} {{item.canty}} {{item.units}}
         <button matChipRemove [attr.aria-label]='"delete"'>
             <mat-icon>cancel</mat-icon>
         </button>
