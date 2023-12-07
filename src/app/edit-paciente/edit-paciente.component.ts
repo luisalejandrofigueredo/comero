@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { VitalSignsService } from '../vital-signs.service';
+import { VitalSignsService } from '../services/vital-signs.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Patient } from '../patient';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -52,6 +52,10 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
 
   agregarMedicamentos() {
     this.router.navigate(['addMedicamentos',this.uuid]);
+  }
+
+  agregarHistoria(){
+    this.router.navigate(['addHistory',this.uuid])
   }
 
   ngOnDestroy(): void {

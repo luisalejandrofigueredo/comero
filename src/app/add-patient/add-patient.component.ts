@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms';
 import { MatDialogRef,MatDialogActions,MatDialogClose,MatDialogTitle,MatDialogContent } from '@angular/material/dialog';
 import { Patient } from '../patient';
 import { Observable } from 'rxjs';
-import { VitalSignsService } from "../vital-signs.service";
+import { VitalSignsService } from "../services/vital-signs.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 @Component({

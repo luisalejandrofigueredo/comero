@@ -37,6 +37,12 @@
                 </span></button>
                 <app-medicamentos [uuid]="this.uuid"></app-medicamentos>
             </mat-tab>
+            <mat-tab label="Historia">
+                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia" type="button" (click)="agregarHistoria()"><span style="width: 40px;" class="material-symbols-outlined">
+                    medical_information
+                </span></button>
+                <app-table-history></app-table-history>
+            </mat-tab>
         </mat-tab-group>
     </mat-dialog-content>
     <mat-dialog-actions align="end">

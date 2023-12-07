@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { VitalSignsService } from "../vital-signs.service";
+import { VitalSignsService } from "../services/vital-signs.service";
 import { Observable } from 'rxjs';
 import { PatientDocument } from "../patient-document";
 import { Socket } from 'ngx-socket-io';

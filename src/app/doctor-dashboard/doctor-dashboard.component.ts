@@ -3,7 +3,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DoctorDashboardDataSource, DoctorDashboardItem } from './doctor-dashboard-datasource';
-import { VitalSignsService } from "../vital-signs.service";
+import { VitalSignsService } from "../services/vital-signs.service";
 import { Socket } from 'ngx-socket-io';
 import { Observable, Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';

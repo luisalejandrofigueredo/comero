@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { VitalSignsService } from "../vital-signs.service";
+import { VitalSignsService } from "../services/vital-signs.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

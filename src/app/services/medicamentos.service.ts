@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Medicamentos } from "./medicamentos";
-import { MedicamentosDocument } from "./medicamentos-document";
-import { environment } from '../environments/environment';
+import { Medicamentos } from "../medicamentos";
+import { MedicamentosDocument } from "../medicamentos-document";
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })

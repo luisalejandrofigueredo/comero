@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, inject } from '
 import { MatTable } from '@angular/material/table';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { VitalSignsService } from '../vital-signs.service';
+import { VitalSignsService } from '../services/vital-signs.service';
 import { DoctorDashboardDataSource, DoctorDashboardItem } from '../doctor-dashboard/doctor-dashboard-datasource';
 import { YesNOComponent } from "../yes-no/yes-no.component";
 import { MatSnackBar } from '@angular/material/snack-bar';

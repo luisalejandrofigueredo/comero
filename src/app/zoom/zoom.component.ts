@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { VitalSignsService } from '../vital-signs.service';
+import { VitalSignsService } from '../services/vital-signs.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Socket } from 'ngx-socket-io';
 import { Observable, Subscription } from 'rxjs';

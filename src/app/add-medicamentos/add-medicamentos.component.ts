@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, Optional, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MedicamentosService } from '../medicamentos.service';
+import { MedicamentosService } from '../services/medicamentos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

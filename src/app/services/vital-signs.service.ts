@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { Patient } from "./patient";
-import { environment } from './../environments/environment';
+import { Patient } from "../patient";
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { PatientDocument } from "./patient-document";
+import { PatientDocument } from "../patient-document";
 @Injectable({
   providedIn: 'root'
 })

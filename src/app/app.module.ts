@@ -35,7 +35,14 @@ import { ZoomComponent } from './zoom/zoom.component';
 import { MedicamentosComponent } from './medicamentos/medicamentos.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from "@angular/material/select";
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
+import { AddHistoryComponent } from './add-history/add-history.component';
+import { HistoryComponent } from './history/history.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { TableHistoryComponent } from './table-history/table-history.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
@@ -52,7 +59,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     EditPacienteComponent,
     ZoomComponent,
     MedicamentosComponent,
-    AddMedicamentosComponent
+    AddMedicamentosComponent,
+    AddHistoryComponent,
+    HistoryComponent,
+    TableHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +87,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatSliderModule,
     MatTabsModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [provideHttpClient(),
   { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } }

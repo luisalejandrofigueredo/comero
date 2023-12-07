@@ -5,7 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { CrudPacienteComponent } from "../crud-paciente/crud-paciente.component";
 import { DoctorDashboardComponent } from "../doctor-dashboard/doctor-dashboard.component";
 import { MatDialog } from '@angular/material/dialog';
-import {VitalSignsService} from '../vital-signs.service'
+import {VitalSignsService} from '../services/vital-signs.service'
 
 
 @Component({

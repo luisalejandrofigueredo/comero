@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { MedicamentosService } from "../medicamentos.service";
+import { MedicamentosService } from "../services/medicamentos.service";
 import { MedicamentosDocument } from "../medicamentos-document";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { YesNOComponent } from '../yes-no/yes-no.component';

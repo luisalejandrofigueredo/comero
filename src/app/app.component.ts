@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { VitalSignsService } from "./vital-signs.service";
+import { VitalSignsService } from "./services/vital-signs.service";
 
 @Component({
   selector: 'app-root',

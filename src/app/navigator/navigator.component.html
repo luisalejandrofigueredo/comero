@@ -3,8 +3,14 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/crudPaciente">Cambiar signos vitales</a>
-      <a mat-list-item (click)="monitorComponent()">Monitor</a>
+      <a mat-list-item routerLink="/crudPaciente"><span class="material-symbols-outlined">
+        inpatient
+      </span><span  class="material-symbols-outlined">
+        outpatient_med
+        </span>Administración</a>
+      <a mat-list-item (click)="monitorComponent()"><span class="material-symbols-outlined">
+        monitor_heart
+        </span>Monitor</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

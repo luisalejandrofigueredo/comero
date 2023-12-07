@@ -28,8 +28,9 @@
     </ng-container>
 
     <ng-container matColumnDef="pulse">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<mat-icon
-          style="color: red; padding-left:10px;">favorite</mat-icon></th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<span style="color:red;padding-left: 10px;" class="material-symbols-outlined">
+        monitor_heart
+        </span></th>
       <td mat-cell *matCellDef="let row">
         @if (row.pulse>90) {
         <span style="background-color: red;">
