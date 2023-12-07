@@ -30,7 +30,7 @@
                 }
             </div>
         </div>
-        <mat-tab-group>
+        <mat-tab-group [selectedIndex]="this.tabIndex">
             <mat-tab label="Medicamentos">
                 <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento" type="button" (click)="agregarMedicamentos()"><span style="width: 40px;" class="material-symbols-outlined">
                     prescriptions
@@ -41,7 +41,7 @@
                 <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia" type="button" (click)="agregarHistoria()"><span style="width: 40px;" class="material-symbols-outlined">
                     medical_information
                 </span></button>
-                <app-table-history></app-table-history>
+                <app-table-history [uuid]="this.uuid"></app-table-history>
             </mat-tab>
         </mat-tab-group>
     </mat-dialog-content>

@@ -5,14 +5,16 @@ import { EditPacienteComponent } from './edit-paciente/edit-paciente.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 import { AddHistoryComponent } from "./add-history/add-history.component";
+import { EditHistoryComponent } from './edit-history/edit-history.component';
 
 const routes: Routes = [{
   component: CrudPacienteComponent, path: 'crudPaciente'
 },
-{ component: EditPacienteComponent, path: 'editPaciente/:id' },
+{ component: EditPacienteComponent, path: 'editPaciente/:id/:tabIndex' },
 { component: AddPatientComponent, path: 'addPatient' },
 { component: AddMedicamentosComponent, path: 'addMedicamentos/:id' },
-{ component: AddHistoryComponent, path: 'addHistory/:id' }];
+{ component: AddHistoryComponent, path: 'addHistory/:id' },
+{ component: EditHistoryComponent, path: 'editHistory/:id' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

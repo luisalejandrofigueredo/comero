@@ -15,6 +15,7 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   public uuid: string = "";
   private route$: any;
+  public tabIndex=0;
   profileForm = new FormGroup({
     firstName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
@@ -26,6 +27,7 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route$ = this.route.params.subscribe((value: Params) => {
       this.uuid = value['id'];
+      this.tabIndex= value['tabIndex'];
       this.profileForm.controls.firstName.disable();
       this.profileForm.controls.lastName.disable();
       this.VitalSings.getPatient(this.uuid).subscribe((paciente: Patient) => {

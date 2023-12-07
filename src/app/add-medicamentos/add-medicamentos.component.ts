@@ -36,13 +36,13 @@ export class AddMedicamentosComponent implements OnInit, OnDestroy {
       .subscribe({
         next: medicamento => {
           this.matSnackBar.open(`Medicamento agregado ${medicamento.name}`, '', { duration: 500 });
-          this.router.navigate(['editPaciente', this.uuid]);
+          this.router.navigate(['editPaciente', this.uuid,0]);
         },error: _error=>{ this.matSnackBar.open(`Error al agregar medicamento`, '', { duration: 500 });}
       })
   }
 
   closeDialog() {
-    this.router.navigate(['editPaciente', this.uuid]);
+    this.router.navigate(['editPaciente', this.uuid,0]);
   }
   ngOnDestroy(): void {
     this.route$?.unsubscribe();

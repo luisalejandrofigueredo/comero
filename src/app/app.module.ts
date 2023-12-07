@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,9 +41,12 @@ import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.co
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { TableHistoryComponent } from './table-history/table-history.component';
-
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+import { EditHistoryComponent } from './edit-history/edit-history.component';
+registerLocaleData(localeEs, 'es');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
 @NgModule({
@@ -62,7 +65,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     AddMedicamentosComponent,
     AddHistoryComponent,
     HistoryComponent,
-    TableHistoryComponent
+    TableHistoryComponent,
+    EditHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +98,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatNativeDateModule
   ],
   providers: [provideHttpClient(),
-  { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } }
+  { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },
+  {provide: MAT_DATE_LOCALE, useValue: 'sp-ES'},
+  {provide: LOCALE_ID, useValue: 'es'}
   ],
   bootstrap: [AppComponent]
 })

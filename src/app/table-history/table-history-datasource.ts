@@ -6,9 +6,16 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface TableHistoryItem {
-  id: string;
-  date: number;
-  history:string;
+  id: string,
+  idPatient: string,
+  item: number,
+  date: number,
+  history: string,
+  "_meta": {
+  },
+  "_deleted": boolean,
+  "_attachments": {},
+  "_rev"?: string
 }
 
 // TODO: replace this with real data from your application
@@ -24,9 +31,9 @@ export class TableHistoryDataSource extends DataSource<TableHistoryItem> {
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(data:TableHistoryItem[]) {
+  constructor(data: TableHistoryItem[]) {
     super();
-    data=this.data;
+    this.data=data;
   }
 
   /**
@@ -40,7 +47,7 @@ export class TableHistoryDataSource extends DataSource<TableHistoryItem> {
       // stream for the data-table to consume.
       return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data ]));
+          return this.getPagedData(this.getSortedData([...this.data]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -51,7 +58,7 @@ export class TableHistoryDataSource extends DataSource<TableHistoryItem> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect(): void {}
+  disconnect(): void { }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,

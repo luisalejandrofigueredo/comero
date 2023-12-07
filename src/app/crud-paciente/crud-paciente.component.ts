@@ -55,7 +55,7 @@ export class CrudPacienteComponent implements AfterViewInit {
   }
 
   editPaciente(id: string) {
-    this.router.navigate(['/editPaciente',id]);
+    this.router.navigate(['/editPaciente',id,0]);
   }
 
   deletePaciente(id: string) {
