@@ -21,7 +21,9 @@ export class ChangeEstateComponent {
   matSnackBar=inject(MatSnackBar);
   constructor(public dialogRef: MatDialogRef<ChangeEstateComponent>){}
   changeVital() {
-    const patient={id:this.profileForm.controls.firstName.value+this.profileForm.controls.lastName.value,
+    const patient={
+      firstName:this.profileForm.controls.firstName.value,
+      lastName:this.profileForm.controls.lastName.value,
       bloodPressureMin:this.profileForm.controls.bloodPressureMin.value,
       bloodPressureMax:this.profileForm.controls.bloodPressureMax.value,
       pulse:this.profileForm.controls.pulse.value

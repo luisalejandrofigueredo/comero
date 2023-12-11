@@ -20,7 +20,6 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { provideHttpClient } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MonitorComponent } from './monitor/monitor.component';
-import { ChangeEstateComponent } from './change-estate/change-estate.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
@@ -46,6 +45,8 @@ import { TableHistoryComponent } from './table-history/table-history.component';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { EditHistoryComponent } from './edit-history/edit-history.component';
+import { ComPythonComponent } from './com-python/com-python.component';
+import { LoginComponent } from './login/login.component';
 registerLocaleData(localeEs, 'es');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
@@ -56,7 +57,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     NavigatorComponent,
     AddPatientComponent,
     MonitorComponent,
-    ChangeEstateComponent,
     DoctorDashboardComponent,
     CrudPacienteComponent,
     EditPacienteComponent,
@@ -66,7 +66,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     AddHistoryComponent,
     HistoryComponent,
     TableHistoryComponent,
-    EditHistoryComponent
+    EditHistoryComponent,
+    ComPythonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

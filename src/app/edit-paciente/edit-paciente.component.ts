@@ -28,8 +28,6 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
     this.route$ = this.route.params.subscribe((value: Params) => {
       this.uuid = value['id'];
       this.tabIndex= value['tabIndex'];
-      this.profileForm.controls.firstName.disable();
-      this.profileForm.controls.lastName.disable();
       this.VitalSings.getPatient(this.uuid).subscribe((paciente: Patient) => {
         this.profileForm.patchValue({ firstName: paciente.firstName, lastName: paciente.lastName, bloodPressureMax: paciente.bloodPressureMax, bloodPressureMin: paciente.bloodPressureMin, pulse: paciente.pulse })
       });
@@ -43,6 +41,8 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
   saveDialog() {
     this.VitalSings.putPatient({
       id: this.uuid,
+      firstName:this.profileForm.controls.firstName.value,
+      lastName:this.profileForm.controls.lastName.value,
       bloodPressureMax: this.profileForm.controls.bloodPressureMax.value,
       bloodPressureMin: this.profileForm.controls.bloodPressureMin.value,
       pulse: this.profileForm.controls.pulse.value

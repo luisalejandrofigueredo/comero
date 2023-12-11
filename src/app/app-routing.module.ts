@@ -6,7 +6,7 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 import { AddHistoryComponent } from "./add-history/add-history.component";
 import { EditHistoryComponent } from './edit-history/edit-history.component';
-
+import { ComPythonComponent } from "./com-python/com-python.component";
 const routes: Routes = [{
   component: CrudPacienteComponent, path: 'crudPaciente'
 },
@@ -14,7 +14,8 @@ const routes: Routes = [{
 { component: AddPatientComponent, path: 'addPatient' },
 { component: AddMedicamentosComponent, path: 'addMedicamentos/:id' },
 { component: AddHistoryComponent, path: 'addHistory/:id' },
-{ component: EditHistoryComponent, path: 'editHistory/:id' }];
+{ component: EditHistoryComponent, path: 'editHistory/:id' },
+{ component: ComPythonComponent, path: 'comPython' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -30,7 +30,7 @@ export class VitalSignsService {
     return this.httpClient.get<PatientDocument[]>(environment.url + '/emergency/getall')
   }
 
-  putPatient(patient: { "id": string, "bloodPressureMax": number, "bloodPressureMin": number, "pulse": number }): Observable<void> {
+  putPatient(patient: { "id": string, firstName:string, lastName:string,"bloodPressureMax": number, "bloodPressureMin": number, "pulse": number }): Observable<void> {
     return this.httpClient.put<void>(environment.url + '/emergency/put', patient)
   }
 
