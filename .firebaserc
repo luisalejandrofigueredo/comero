@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "comero-5e56a": {
+      "hosting": {
+        "comero": [
+          "comero-5e56a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "comero-5e56a"
+  }
+}

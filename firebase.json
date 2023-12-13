@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "comero",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

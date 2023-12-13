@@ -7,15 +7,20 @@ import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.co
 import { AddHistoryComponent } from "./add-history/add-history.component";
 import { EditHistoryComponent } from './edit-history/edit-history.component';
 import { ComPythonComponent } from "./com-python/com-python.component";
-const routes: Routes = [{
-  component: CrudPacienteComponent, path: 'crudPaciente'
-},
-{ component: EditPacienteComponent, path: 'editPaciente/:id/:tabIndex' },
-{ component: AddPatientComponent, path: 'addPatient' },
-{ component: AddMedicamentosComponent, path: 'addMedicamentos/:id' },
-{ component: AddHistoryComponent, path: 'addHistory/:id' },
-{ component: EditHistoryComponent, path: 'editHistory/:id' },
-{ component: ComPythonComponent, path: 'comPython' }];
+import { LoginComponent } from "./login/login.component";
+import { HomepageComponent } from './homepage/homepage.component';
+import { AuthFirebaseGuard } from "./auth-firebase.guard";
+const routes: Routes = [
+  { component: CrudPacienteComponent, path: 'crudPaciente', canActivate: [AuthFirebaseGuard] },
+  { component: EditPacienteComponent, path: 'editPaciente/:id/:tabIndex', canActivate: [AuthFirebaseGuard] },
+  { component: AddPatientComponent, path: 'addPatient', canActivate: [AuthFirebaseGuard] },
+  { component: AddMedicamentosComponent, path: 'addMedicamentos/:id', canActivate: [AuthFirebaseGuard] },
+  { component: AddHistoryComponent, path: 'addHistory/:id', canActivate: [AuthFirebaseGuard] },
+  { component: EditHistoryComponent, path: 'editHistory/:id', canActivate: [AuthFirebaseGuard] },
+  { component: ComPythonComponent, path: 'comPython', canActivate: [AuthFirebaseGuard] },
+  { component: LoginComponent, path: 'login' },
+  { component: HomepageComponent, path: '' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

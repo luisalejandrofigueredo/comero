@@ -40,13 +40,18 @@ import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.co
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { TableHistoryComponent } from './table-history/table-history.component';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { EditHistoryComponent } from './edit-history/edit-history.component';
 import { ComPythonComponent } from './com-python/com-python.component';
 import { LoginComponent } from './login/login.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { environment } from "../environments/environment";
+
 registerLocaleData(localeEs, 'es');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
@@ -97,12 +102,15 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatGridListModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
   ],
   providers: [provideHttpClient(),
   { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },
-  {provide: MAT_DATE_LOCALE, useValue: 'sp-ES'},
-  {provide: LOCALE_ID, useValue: 'es'}
+  { provide: MAT_DATE_LOCALE, useValue: 'sp-ES' },
+  { provide: LOCALE_ID, useValue: 'es' },
+  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],
   bootstrap: [AppComponent]
 })

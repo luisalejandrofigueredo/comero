@@ -1,1 +1,23 @@
-<p>login works!</p>
+<mat-card>
+    <form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
+        <mat-form-field>
+            <mat-label>Login</mat-label>
+            <input matInput type="text" name="login" formControlName="login">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput name="password" formControlName="password" [type]="passwordVisible ? 'text' : 'password'">
+            <button type="button" mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="!passwordVisible">
+                <mat-icon>{{passwordVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-button type="submit">Login</button>
+    </form>
+</mat-card>
+<mat-card>
+    <button mat-button><span class="material-symbols-outlined">
+        login
+        </span>Login with google</button>
+</mat-card>
