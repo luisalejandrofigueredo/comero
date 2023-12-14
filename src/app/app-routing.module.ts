@@ -10,6 +10,7 @@ import { ComPythonComponent } from "./com-python/com-python.component";
 import { LoginComponent } from "./login/login.component";
 import { HomepageComponent } from './homepage/homepage.component';
 import { AuthFirebaseGuard } from "./auth-firebase.guard";
+import { DoctorDashboardComponent } from "./doctor-dashboard/doctor-dashboard.component";
 const routes: Routes = [
   { component: CrudPacienteComponent, path: 'crudPaciente', canActivate: [AuthFirebaseGuard] },
   { component: EditPacienteComponent, path: 'editPaciente/:id/:tabIndex', canActivate: [AuthFirebaseGuard] },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { component: EditHistoryComponent, path: 'editHistory/:id', canActivate: [AuthFirebaseGuard] },
   { component: ComPythonComponent, path: 'comPython', canActivate: [AuthFirebaseGuard] },
   { component: LoginComponent, path: 'login' },
-  { component: HomepageComponent, path: '' }
+  { component: HomepageComponent, path: '' },
+  { component:DoctorDashboardComponent,path:'doctorDashboard',canActivate: [AuthFirebaseGuard]}
 ];
 
 @NgModule({

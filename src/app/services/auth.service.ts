@@ -7,14 +7,16 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { User } from '../interfaces/user';
+import * as auth from 'firebase/auth';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private angularFireStore=inject(AngularFirestore)
-  private userData: any;
+  private angularFireStore=inject(AngularFirestore);
   private angularFireAuth=inject(AngularFireAuth);
-  private router=inject(Router)
+  private router=inject(Router);
+  private auth=inject(Auth);
+  private userData: any;
 
   constructor () {
     this.angularFireAuth.authState.subscribe((user) => {
@@ -71,6 +73,24 @@ export class AuthService {
       localStorage.removeItem('user');
       this.router.navigate(['']);
     });
+  }
+
+  GoogleAuth() {
+    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      this.router.navigate(['']);
+    });
+  }
+
+  AuthLogin(provider: any) {
+    return this.angularFireAuth
+      .signInWithPopup(provider)
+      .then((result) => {
+        this.router.navigate(['']);
+        this.SetUserData(result.user);
+      })
+      .catch((error) => {
+        window.alert(error);
+      });
   }
 
 

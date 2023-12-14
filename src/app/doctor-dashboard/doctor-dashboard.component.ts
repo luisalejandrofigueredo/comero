@@ -9,6 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ZoomComponent  } from "../zoom/zoom.component";
 import { PatientDocument } from '../patient-document';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-doctor-dashboard',
   templateUrl: './doctor-dashboard.component.html',
@@ -22,6 +23,7 @@ export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
   public dataSource = new DoctorDashboardDataSource([]);
   private socket = inject(Socket);
   private madDialog=inject(MatDialog);
+  private router=inject(Router)
   public getSocket$: Observable<any> | undefined;
   public subScriptionFromUpdate$:Subscription | undefined;
   public subScriptionFromDelete$:Subscription | undefined;
@@ -32,7 +34,7 @@ export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['firstName','lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse','zoom'];
-  constructor(public dialogRef: MatDialogRef<DoctorDashboardComponent>) { }
+  constructor() { }
 
   ngAfterViewInit(): void {
     this.vitalSingsService.getPatients().subscribe((data:PatientDocument[]) => {
@@ -75,7 +77,7 @@ export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
   }
 
   close() {
-    this.dialogRef.close()
+    this.router.navigate(['']);
   }
 
   zoom(id:string){

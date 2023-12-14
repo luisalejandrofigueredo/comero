@@ -1,3 +1,4 @@
+@if (authService.isLoggedIn===false) {
 <mat-card>
     <form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
         <mat-form-field>
@@ -17,7 +18,14 @@
     </form>
 </mat-card>
 <mat-card>
-    <button mat-button><span class="material-symbols-outlined">
+    <button mat-button (click)="loginGoogle()" ><span class="material-symbols-outlined">
         login
         </span>Login with google</button>
 </mat-card>
+} @else {
+    <mat-card>
+        <button mat-raised-button (click)="logout()" ><span class="material-symbols-outlined">
+            login
+            </span>Logout</button>
+    </mat-card>
+}

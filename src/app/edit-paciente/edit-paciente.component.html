@@ -30,17 +30,25 @@
                 }
             </div>
         </div>
-        <mat-tab-group [selectedIndex]="this.tabIndex">
+        <mat-tab-group [selectedIndex]="this.tabIndex" dynamicHeight>
             <mat-tab label="Medicamentos">
-                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento" type="button" (click)="agregarMedicamentos()"><span style="width: 40px;" class="material-symbols-outlined">
-                    prescriptions
-                </span></button>
+                <ng-template mat-tab-label>
+                    <span style="width: 40px;" class="material-symbols-outlined">
+                        prescriptions
+                    </span>    
+                    Medicamentos
+                  </ng-template>
+                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento" type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon> </button>
                 <app-medicamentos [uuid]="this.uuid"></app-medicamentos>
             </mat-tab>
-            <mat-tab label="Historia">
-                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia" type="button" (click)="agregarHistoria()"><span style="width: 40px;" class="material-symbols-outlined">
-                    medical_information
-                </span></button>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span style="width: 40px;" class="material-symbols-outlined">
+                        medical_information
+                    </span>    
+                    Historias
+                  </ng-template>
+                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia" type="button" (click)="agregarHistoria()"><mat-icon>add</mat-icon></button>
                 <app-table-history [uuid]="this.uuid"></app-table-history>
             </mat-tab>
         </mat-tab-group>

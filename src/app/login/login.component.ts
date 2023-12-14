@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from "../services/auth.service";
 @Component({
@@ -8,17 +8,23 @@ import { AuthService } from "../services/auth.service";
 })
 export class LoginComponent {
   passwordVisible = false;
-  private authService=inject(AuthService);
+  public authService = inject(AuthService);
   profileForm = new FormGroup({
     login: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     password: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
   });
 
-  cancel(){}
+  cancel() { }
 
-  async saveDialog(){
-  await this.authService.SignIn(this.profileForm.controls.login.value,this.profileForm.controls.password.value)
-}
+  async saveDialog() {
+    await this.authService.SignIn(this.profileForm.controls.login.value, this.profileForm.controls.password.value)
+  }
 
+  async logout(){
+    await this.authService.SignOut()
+  }
 
+  async loginGoogle(){
+    await this.authService.GoogleAuth()
+  }
 }
