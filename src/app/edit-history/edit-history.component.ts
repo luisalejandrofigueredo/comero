@@ -15,31 +15,46 @@ export class EditHistoryComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private route$: Subscription | undefined
   private uuid!: string;
-  private idPatient!:string;
+  private idPatient!: string;
   profileForm = new FormGroup({
-    date: new FormControl<number>(new Date().getTime(), { nonNullable: true, validators: Validators.required }),
+    date: new FormControl<Date>(new Date(), { nonNullable: true, validators: Validators.required }),
     history: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
   });
   ngOnInit(): void {
     this.route$ = this.activatedRoute.params.subscribe((value: Params) => {
       this.uuid = value['id'];
       this.historyService.getHistory(this.uuid).subscribe((history) => {
-        this.idPatient=history.idPatient;
+        this.idPatient = history.idPatient;
+        if (this.compareDate(history.date,new Date().getTime())===false) {
+          this.router.navigate(['editPaciente', this.idPatient, 1]);
+         }
         this.profileForm.patchValue({
-          date: history.date,
+          date: new Date(history.date),
           history: history.history
         })
       })
     })
   }
 
+  compareDate(date: number, secondDate: number): boolean {
+    if (new Date(date).getDate() !== new Date(secondDate).getDate()) {
+      return false
+    }
+    if (new Date(date).getMonth() !== new Date(secondDate).getMonth()) {
+      return false
+    }
+    if (new Date(date).getFullYear() !== new Date(secondDate).getFullYear()) {
+      return false
+    }
+    return true
+  }
+
   saveDialog() {
     this.historyService.putHistory({
       id: this.uuid,
-      date: this.profileForm.controls.date.value,
+      date: this.profileForm.controls.date.value.getTime(),
       history: this.profileForm.controls.history.value
     }).subscribe((data) => {
-      console.log('data',data)
       this.router.navigate(['editPaciente', this.idPatient, 1]);
     })
   }

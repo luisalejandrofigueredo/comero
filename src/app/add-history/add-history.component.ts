@@ -11,7 +11,7 @@ import { HistoryService } from "../services/history.service";
 })
 export class AddHistoryComponent implements OnInit, OnDestroy {
   profileForm = new FormGroup({
-    date: new FormControl<number>(new Date().getTime(), { nonNullable: true, validators: Validators.required }),
+    date: new FormControl<Date>(new Date(), { nonNullable: true }),
     history: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
   });
   router = inject(Router);
@@ -22,11 +22,12 @@ export class AddHistoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route$ = this.route.params.subscribe((value: Params) => {
       this.uuid = value['id'];
+      this.profileForm.controls.date.disabled
     });
   }
   saveDialog() {
     this.historyService.addHistory({
-      date: this.profileForm.controls.date.value, idPatient: this.uuid,
+      date: this.profileForm.controls.date.value.getTime(), idPatient: this.uuid,
       history:this.profileForm.controls.history.value
     }).subscribe({next:(historyDocument) => {
       console.log('history document',historyDocument)

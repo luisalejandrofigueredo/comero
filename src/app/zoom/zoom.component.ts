@@ -6,6 +6,7 @@ import { Socket } from 'ngx-socket-io';
 import { Observable, Subscription } from 'rxjs';
 import { PatientDocument } from '../patient-document';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AutofillEvent } from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-zoom',
@@ -28,7 +29,9 @@ export class ZoomComponent implements OnDestroy {
     pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
   });
   ngOnInit(): void {
-    this.profileForm.disable();
+    this.profileForm.controls.firstName.disable;
+    this.profileForm.controls.lastName.disable;
+    this.profileForm.controls.pulse.disable;
     this.VitalSings.getPatient(this.data).subscribe((patient) => {
       this.profileForm.patchValue({
         firstName: patient.firstName,
@@ -73,5 +76,18 @@ export class ZoomComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.subScriptionFromUpdate$?.unsubscribe();
     this.subScriptionFromDelete$?.unsubscribe()
+  }
+
+  change(event:number){
+    this.matSnackBar.open('Los valores no pueden ser cambiados en el monitor','',{duration:1000})
+    this.VitalSings.getPatient(this.data).subscribe((patient) => {
+      this.profileForm.patchValue({
+        firstName: patient.firstName,
+        lastName: patient.lastName,
+        pulse: patient.pulse,
+        bloodPressureMax: patient.bloodPressureMax,
+        bloodPressureMin: patient.bloodPressureMin
+      });
+    }) 
   }
 }

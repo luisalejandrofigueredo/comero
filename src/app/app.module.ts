@@ -51,7 +51,6 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from "../environments/environment";
-
 registerLocaleData(localeEs, 'es');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };

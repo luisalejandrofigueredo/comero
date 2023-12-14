@@ -6,6 +6,7 @@ export interface MedicamentosDocument {
     "item": number,
     "type": string,
     "units": string,
+    "hora":number,
     "_meta": {
     },
     "_deleted": boolean,

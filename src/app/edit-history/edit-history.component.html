@@ -4,7 +4,7 @@
             <div class="column">
                 <mat-form-field style="width: 200px;">
                     <mat-label>Seleccione fecha</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <input matInput [disabled]="true" [matDatepicker]="picker" formControlName="date">
                     <mat-hint>DD/MM/AAAA</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>

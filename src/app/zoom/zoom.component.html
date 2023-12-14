@@ -16,9 +16,9 @@
             }
         </mat-form-field>
         <div class="row">
-            <mat-slider discrete="true" min="0" max="200">
-                <input matSliderStartThumb formControlName="bloodPressureMin">
-                <input matSliderEndThumb formControlName="bloodPressureMax">
+            <mat-slider  discrete="true" min="0" max="200">
+                <input (valueChange)="change($event)" matSliderStartThumb formControlName="bloodPressureMin">
+                <input (valueChange)="change($event)" matSliderEndThumb formControlName="bloodPressureMax">
             </mat-slider>
             <span class="material-symbols-outlined">blood_pressure</span>
             <mat-form-field>

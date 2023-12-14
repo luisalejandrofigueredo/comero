@@ -6,4 +6,5 @@ export interface Medicamentos {
     "type": string,
     "units": string,
     "item"?: number,
+    "hora":number
 }
