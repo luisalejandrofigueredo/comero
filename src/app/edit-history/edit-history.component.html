@@ -1,4 +1,9 @@
 <mat-card>
+    <button mat-icon-button (click)="addText()" color="primary">
+        <span class="material-symbols-outlined">
+            prescriptions
+            </span>
+    </button>
     <form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
         <mat-card-content>
             <div class="column">
@@ -6,8 +11,8 @@
                     <mat-label>Seleccione fecha</mat-label>
                     <input matInput [disabled]="true" [matDatepicker]="picker" formControlName="date">
                     <mat-hint>DD/MM/AAAA</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-datepicker-toggle [disabled]="true" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker [disabled]="true" #picker></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Historia</mat-label>

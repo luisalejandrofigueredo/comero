@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HistoryService } from '../services/history.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-history',
@@ -10,6 +11,7 @@ import { HistoryService } from '../services/history.service';
   styleUrl: './edit-history.component.css'
 })
 export class EditHistoryComponent implements OnInit, OnDestroy {
+  private snackBar=inject(MatSnackBar);
   private activatedRoute = inject(ActivatedRoute);
   private historyService = inject(HistoryService);
   private router = inject(Router);
@@ -26,6 +28,7 @@ export class EditHistoryComponent implements OnInit, OnDestroy {
       this.historyService.getHistory(this.uuid).subscribe((history) => {
         this.idPatient = history.idPatient;
         if (this.compareDate(history.date,new Date().getTime())===false) {
+          this.snackBar.open('Esa historia ya no puede ser modificada','',{duration:1000})
           this.router.navigate(['editPaciente', this.idPatient, 1]);
          }
         this.profileForm.patchValue({
@@ -58,6 +61,8 @@ export class EditHistoryComponent implements OnInit, OnDestroy {
       this.router.navigate(['editPaciente', this.idPatient, 1]);
     })
   }
+
+  addText(){}
 
   closeDialog() {
     this.router.navigate(['editPaciente', this.idPatient, 1]);

@@ -29,6 +29,12 @@
                     <mat-icon>favorite</mat-icon>
                 }
             </div>
+            <span class="material-symbols-outlined">
+                oxygen_saturation
+                </span>
+            <mat-slider min="0" max="100" step="1" discrete>
+                <input matSliderThumb formControlName="oxygen">
+            </mat-slider>
         </div>
         <mat-tab-group [selectedIndex]="this.tabIndex" dynamicHeight>
             <mat-tab label="Medicamentos">

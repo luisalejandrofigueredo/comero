@@ -23,7 +23,7 @@ import { MonitorComponent } from './monitor/monitor.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CrudPacienteComponent } from './crud-paciente/crud-paciente.component';
 import { EditPacienteComponent } from './edit-paciente/edit-paciente.component';
@@ -51,6 +51,9 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from "../environments/environment";
+import { CustomMatPaginatorIntl } from './custompaginator';
+import { AddTextHistoryComponent } from './add-text-history/add-text-history.component';
+
 registerLocaleData(localeEs, 'es');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
@@ -72,7 +75,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     TableHistoryComponent,
     EditHistoryComponent,
     ComPythonComponent,
-    LoginComponent
+    LoginComponent,
+    AddTextHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +113,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
   { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },
   { provide: MAT_DATE_LOCALE, useValue: 'sp-ES' },
   { provide: LOCALE_ID, useValue: 'es' },
-  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+  { provide: FIREBASE_OPTIONS, useValue: environment.firebase },{
+  provide: MatPaginatorIntl, 
+  useClass: CustomMatPaginatorIntl
+}
   ],
   bootstrap: [AppComponent]
 })

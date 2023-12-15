@@ -1,6 +1,6 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, inject } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { VitalSignsService } from '../services/vital-signs.service';
 import { DoctorDashboardDataSource, DoctorDashboardItem } from '../doctor-dashboard/doctor-dashboard-datasource';
@@ -21,10 +21,10 @@ export class CrudPacienteComponent implements AfterViewInit {
   private vitalSingsService = inject(VitalSignsService)
   private addPacienteDialog = inject(MatDialog);
   private matSnackBar = inject(MatSnackBar);
-  private router=inject(Router);
+  private router = inject(Router);
   public dataSource = new DoctorDashboardDataSource([]);
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['firstName', 'lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse', 'edit', 'delete'];
+  displayedColumns = ['firstName', 'lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse', 'oxygen', 'edit', 'delete'];
   constructor() { }
 
   ngAfterViewInit(): void {
@@ -32,8 +32,6 @@ export class CrudPacienteComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
     this.vitalSingsService.getPatients().subscribe(data => {
-      this.paginator._intl = new MatPaginatorIntl();
-      this.paginator._intl.itemsPerPageLabel = "Items por página"
       this.dataSource = new DoctorDashboardDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
@@ -42,8 +40,6 @@ export class CrudPacienteComponent implements AfterViewInit {
   }
 
   refreshDataSource(pacientes: PatientDocument[]) {
-    this.paginator._intl = new MatPaginatorIntl();
-    this.paginator._intl.itemsPerPageLabel = "Items por página"
     this.dataSource = new DoctorDashboardDataSource(pacientes);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -55,12 +51,12 @@ export class CrudPacienteComponent implements AfterViewInit {
   }
 
   editPaciente(id: string) {
-    this.router.navigate(['/editPaciente',id,0]);
+    this.router.navigate(['/editPaciente', id, 0]);
   }
 
   deletePaciente(id: string) {
     this.vitalSingsService.getPatient(id).subscribe((paciente) => {
-      this.addPacienteDialog.open(YesNOComponent, { enterAnimationDuration:500,disableClose: true, data: { action: 'Egresar', description: `Desea egresar a ${paciente.firstName} ${paciente.lastName}` } }).afterClosed().subscribe((respuesta: boolean) => {
+      this.addPacienteDialog.open(YesNOComponent, { enterAnimationDuration: 500, disableClose: true, data: { action: 'Egresar', description: `Desea egresar a ${paciente.firstName} ${paciente.lastName}` } }).afterClosed().subscribe((respuesta: boolean) => {
         if (respuesta === true) {
           this.vitalSingsService.deletePatient(id).subscribe((ok) => {
             this.matSnackBar.open('Paciente egresado', '', { duration: 500 });

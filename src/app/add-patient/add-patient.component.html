@@ -16,16 +16,25 @@
             }
         </mat-form-field>
         <div class="row">
+            <span class="material-symbols-outlined">blood_pressure</span>
             <mat-slider discrete="true" min="0" max="200">
                 <input matSliderStartThumb formControlName="bloodPressureMin">
                 <input matSliderEndThumb formControlName="bloodPressureMax">
             </mat-slider>
-            <span class="material-symbols-outlined">blood_pressure</span>
             <div class="row">
+                <span class="material-symbols-outlined">
+                    vital_signs
+                    </span>
                 <mat-slider min="0" max="200" step="1" discrete>
                     <input matSliderThumb formControlName="pulse">
                 </mat-slider>
             </div>
+            <span class="material-symbols-outlined">
+                oxygen_saturation
+                </span>
+            <mat-slider min="0" max="100" step="1" discrete>
+                <input matSliderThumb formControlName="oxygen">
+            </mat-slider>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">

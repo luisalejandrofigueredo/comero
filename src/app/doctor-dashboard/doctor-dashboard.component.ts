@@ -33,13 +33,11 @@ export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
   public getFromInsert$:Observable<PatientDocument>=this.socket.fromEvent<PatientDocument>("insertRecord");
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['firstName','lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse','zoom'];
+  displayedColumns = ['firstName','lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse','oxygen','zoom'];
   constructor() { }
 
   ngAfterViewInit(): void {
     this.vitalSingsService.getPatients().subscribe((data:PatientDocument[]) => {
-      this.paginator._intl = new MatPaginatorIntl();
-      this.paginator._intl.itemsPerPageLabel = "Items por página"
       this.dataSource = new DoctorDashboardDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

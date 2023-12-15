@@ -15,21 +15,22 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   public uuid: string = "";
   private route$: any;
-  public tabIndex=0;
+  public tabIndex = 0;
   profileForm = new FormGroup({
     firstName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     bloodPressureMax: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
     bloodPressureMin: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
-    pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
+    pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
+    oxygen: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
   });
   constructor(private route: ActivatedRoute, private VitalSings: VitalSignsService) { }
   ngOnInit(): void {
     this.route$ = this.route.params.subscribe((value: Params) => {
       this.uuid = value['id'];
-      this.tabIndex= value['tabIndex'];
+      this.tabIndex = value['tabIndex'];
       this.VitalSings.getPatient(this.uuid).subscribe((paciente: Patient) => {
-        this.profileForm.patchValue({ firstName: paciente.firstName, lastName: paciente.lastName, bloodPressureMax: paciente.bloodPressureMax, bloodPressureMin: paciente.bloodPressureMin, pulse: paciente.pulse })
+        this.profileForm.patchValue({ firstName: paciente.firstName, lastName: paciente.lastName, bloodPressureMax: paciente.bloodPressureMax, bloodPressureMin: paciente.bloodPressureMin, pulse: paciente.pulse, oxygen: paciente.oxygen })
       });
     })
   }
@@ -41,11 +42,12 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
   saveDialog() {
     this.VitalSings.putPatient({
       id: this.uuid,
-      firstName:this.profileForm.controls.firstName.value,
-      lastName:this.profileForm.controls.lastName.value,
+      firstName: this.profileForm.controls.firstName.value,
+      lastName: this.profileForm.controls.lastName.value,
       bloodPressureMax: this.profileForm.controls.bloodPressureMax.value,
       bloodPressureMin: this.profileForm.controls.bloodPressureMin.value,
-      pulse: this.profileForm.controls.pulse.value
+      pulse: this.profileForm.controls.pulse.value,
+      oxygen: this.profileForm.controls.oxygen.value
     }).subscribe((next) => {
       this.matSnackBar.open('Signos vitales actualizado', '', { duration: 500 })
       this.router.navigate(['crudPaciente']);
@@ -53,11 +55,11 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
   }
 
   agregarMedicamentos() {
-    this.router.navigate(['addMedicamentos',this.uuid]);
+    this.router.navigate(['addMedicamentos', this.uuid]);
   }
 
-  agregarHistoria(){
-    this.router.navigate(['addHistory',this.uuid])
+  agregarHistoria() {
+    this.router.navigate(['addHistory', this.uuid])
   }
 
   ngOnDestroy(): void {

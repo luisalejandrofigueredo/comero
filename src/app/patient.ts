@@ -4,5 +4,6 @@ export interface Patient {
     lastName:string,
     bloodPressureMax:number,
     bloodPressureMin:number,
-    pulse:number
+    pulse:number,
+    oxygen:number
 }

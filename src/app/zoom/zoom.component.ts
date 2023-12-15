@@ -6,7 +6,6 @@ import { Socket } from 'ngx-socket-io';
 import { Observable, Subscription } from 'rxjs';
 import { PatientDocument } from '../patient-document';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AutofillEvent } from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-zoom',
@@ -16,32 +15,35 @@ import { AutofillEvent } from '@angular/cdk/text-field';
 export class ZoomComponent implements OnDestroy {
   private socket = inject(Socket);
   private matSnackBar = inject(MatSnackBar);
-  public subScriptionFromUpdate$:Subscription | undefined;
-  public subScriptionFromDelete$:Subscription | undefined;
-  public getFromUpdate$: Observable<any> =this.socket.fromEvent<PatientDocument>("updateRecord");
-  public getFromDelete$: Observable<any> =this.socket.fromEvent<PatientDocument>("deleteRecord");
+  public subScriptionFromUpdate$: Subscription | undefined;
+  public subScriptionFromDelete$: Subscription | undefined;
+  public getFromUpdate$: Observable<any> = this.socket.fromEvent<PatientDocument>("updateRecord");
+  public getFromDelete$: Observable<any> = this.socket.fromEvent<PatientDocument>("deleteRecord");
   constructor(@Inject(MAT_DIALOG_DATA) public data: string, public dialogRef: MatDialogRef<ZoomComponent>, private VitalSings: VitalSignsService) { }
   profileForm = new FormGroup({
     firstName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     bloodPressureMin: new FormControl<number>(100, { nonNullable: true }),
     bloodPressureMax: new FormControl<number>(150, { nonNullable: true }),
-    pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
+    pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
+    oxygen: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
   });
   ngOnInit(): void {
-    this.profileForm.controls.firstName.disable;
-    this.profileForm.controls.lastName.disable;
-    this.profileForm.controls.pulse.disable;
+    this.profileForm.controls.firstName.disable();
+    this.profileForm.controls.lastName.disable();
+    this.profileForm.controls.pulse.disable();
+    this.profileForm.controls.oxygen.disable();
     this.VitalSings.getPatient(this.data).subscribe((patient) => {
       this.profileForm.patchValue({
         firstName: patient.firstName,
         lastName: patient.lastName,
         pulse: patient.pulse,
         bloodPressureMax: patient.bloodPressureMax,
-        bloodPressureMin: patient.bloodPressureMin
+        bloodPressureMin: patient.bloodPressureMin,
+        oxygen:patient.oxygen
       });
     })
-    this.subScriptionFromUpdate$=this.getFromUpdate$.subscribe((document: any) => {
+    this.subScriptionFromUpdate$ = this.getFromUpdate$.subscribe((document: any) => {
       if (this.data === document.documentData.id) {
         if (document.documentData !== document.previousDocumentData) {
           this.profileForm.patchValue({
@@ -49,7 +51,8 @@ export class ZoomComponent implements OnDestroy {
             lastName: document.documentData.lastName,
             pulse: document.documentData.pulse,
             bloodPressureMax: document.documentData.bloodPressureMax,
-            bloodPressureMin: document.documentData.bloodPressureMin
+            bloodPressureMin: document.documentData.bloodPressureMin,
+            oxygen:document.oxygen
           });
           if (document.documentData.pulse !== document.previousDocumentData.pulse) {
             this.matSnackBar.open(`El pulso ha variado en:${document.documentData.pulse - document.previousDocumentData.pulse}`, '', { duration: 1000 })
@@ -60,11 +63,15 @@ export class ZoomComponent implements OnDestroy {
           if (document.documentData.bloodPressureMin !== document.previousDocumentData.bloodPressureMin) {
             this.matSnackBar.open(`La minima ha variado en:${document.documentData.bloodPressureMin - document.previousDocumentData.bloodPressureMin}`, '', { duration: 1000 })
           }
+          if (document.documentData.oxygen !== document.previousDocumentData.oxygen) {
+            this.matSnackBar.open(`La saturación de oxígeno ha variado en:${document.documentData.oxygen - document.previousDocumentData.oxygen}`, '', { duration: 1000 })
+          }
+
         }
       }
     });
-    this.subScriptionFromDelete$=this.getFromDelete$.subscribe((document)=>{
-      if (document.documentData.id===this.data) {
+    this.subScriptionFromDelete$ = this.getFromDelete$.subscribe((document) => {
+      if (document.documentData.id === this.data) {
         this.dialogRef.close();
       }
     });
@@ -78,8 +85,8 @@ export class ZoomComponent implements OnDestroy {
     this.subScriptionFromDelete$?.unsubscribe()
   }
 
-  change(event:number){
-    this.matSnackBar.open('Los valores no pueden ser cambiados en el monitor','',{duration:1000})
+  change(event: number) {
+    this.matSnackBar.open('Los valores no pueden ser cambiados en el monitor', '', { duration: 1000 })
     this.VitalSings.getPatient(this.data).subscribe((patient) => {
       this.profileForm.patchValue({
         firstName: patient.firstName,
@@ -88,6 +95,6 @@ export class ZoomComponent implements OnDestroy {
         bloodPressureMax: patient.bloodPressureMax,
         bloodPressureMin: patient.bloodPressureMin
       });
-    }) 
+    })
   }
 }

@@ -55,7 +55,14 @@
               }
           </td>
         </ng-container>
-
+        <ng-container matColumnDef="oxygen">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Saturación<span
+              style="color: red; padding-left: 10px;"><span class="material-symbols-outlined"><span
+                  class="material-symbols-outlined">
+                  oxygen_saturation
+                </span></span></span></th>
+          <td mat-cell *matCellDef="let row">{{row.oxygen}}</td>
+        </ng-container>
         <ng-container matColumnDef="zoom">
           <th mat-header-cell *matHeaderCellDef>Zoom</th>
           <td mat-cell *matCellDef="let row"><button mat-icon-button

@@ -46,6 +46,9 @@ export class AuthService {
       });
   }
 
+  getUserData(){
+    return this.userData
+  }
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.angularFireStore.doc(
       `users/${user.uid}`
@@ -64,7 +67,6 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    console.log('user',user)
     return user !== null ? true : false;
   }
 
@@ -85,13 +87,11 @@ export class AuthService {
     return this.angularFireAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['']);
         this.SetUserData(result.user);
+        this.router.navigate(['']);
       })
       .catch((error) => {
         window.alert(error);
       });
   }
-
-
 }

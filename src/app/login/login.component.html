@@ -24,6 +24,8 @@
 </mat-card>
 } @else {
     <mat-card>
+        <p>{{this.authService.getUserData().displayName}}</p>
+        <img width="50px" [src]="this.authService.getUserData().photoURL" alt="">
         <button mat-raised-button (click)="logout()" ><span class="material-symbols-outlined">
             login
             </span>Logout</button>

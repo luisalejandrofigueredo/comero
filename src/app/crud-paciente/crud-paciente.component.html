@@ -28,8 +28,9 @@
     </ng-container>
 
     <ng-container matColumnDef="pulse">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<span style="color:red;padding-left: 10px;" class="material-symbols-outlined">
-        monitor_heart
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso<span style="color:red;padding-left: 10px;"
+          class="material-symbols-outlined">
+          monitor_heart
         </span></th>
       <td mat-cell *matCellDef="let row">
         @if (row.pulse>90) {
@@ -47,6 +48,14 @@
           }
       </td>
     </ng-container>
+    <ng-container matColumnDef="oxygen">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Saturación<span
+          style="color: red; padding-left: 10px;"><span class="material-symbols-outlined"><span
+              class="material-symbols-outlined">
+              oxygen_saturation
+            </span></span></span></th>
+      <td mat-cell *matCellDef="let row">{{row.oxygen}}</td>
+    </ng-container>
 
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef>Editar</th>
@@ -55,9 +64,10 @@
 
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef>Egresar</th>
-      <td mat-cell *matCellDef="let row"><span style="color: red;cursor: pointer;" (click)="deletePaciente(row.id)" class="material-symbols-outlined">
-outpatient_med
-</span></td>
+      <td mat-cell *matCellDef="let row"><span style="color: red;cursor: pointer;" (click)="deletePaciente(row.id)"
+          class="material-symbols-outlined">
+          outpatient_med
+        </span></td>
     </ng-container>
 
 

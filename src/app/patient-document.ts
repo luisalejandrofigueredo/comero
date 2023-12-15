@@ -5,6 +5,7 @@ export interface PatientDocument {
         "bloodPressureMax": number,
         "bloodPressureMin": number,
         "pulse": number,
+        "oxygen":number,
         "_meta": {
             "lwt": number
         },
