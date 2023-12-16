@@ -21,18 +21,14 @@ export class ZoomComponent implements OnDestroy {
   public getFromDelete$: Observable<any> = this.socket.fromEvent<PatientDocument>("deleteRecord");
   constructor(@Inject(MAT_DIALOG_DATA) public data: string, public dialogRef: MatDialogRef<ZoomComponent>, private VitalSings: VitalSignsService) { }
   profileForm = new FormGroup({
-    firstName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
-    lastName: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
+    firstName: new FormControl<string>({value:'',disabled:true}, { nonNullable: true, validators: Validators.required }),
+    lastName: new FormControl<string>({value:'',disabled:true}, { nonNullable: true, validators: Validators.required }),
     bloodPressureMin: new FormControl<number>(100, { nonNullable: true }),
     bloodPressureMax: new FormControl<number>(150, { nonNullable: true }),
-    pulse: new FormControl<number>(0, { nonNullable: true, validators: Validators.required }),
-    oxygen: new FormControl<number>(0, { nonNullable: true, validators: Validators.required })
+    pulse: new FormControl<number>({value:0,disabled:true}, { nonNullable: true, validators: Validators.required }),
+    oxygen: new FormControl<number>({value:0,disabled:true}, { nonNullable: true, validators: Validators.required })
   });
   ngOnInit(): void {
-    this.profileForm.controls.firstName.disable();
-    this.profileForm.controls.lastName.disable();
-    this.profileForm.controls.pulse.disable();
-    this.profileForm.controls.oxygen.disable();
     this.VitalSings.getPatient(this.data).subscribe((patient) => {
       this.profileForm.patchValue({
         firstName: patient.firstName,

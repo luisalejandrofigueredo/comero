@@ -36,6 +36,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from "@angular/material/select";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
@@ -106,6 +107,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
   ],

@@ -15,46 +15,59 @@
                 <input matSliderEndThumb formControlName="bloodPressureMax">
             </mat-slider>
             @if (this.profileForm.controls.bloodPressureMin.dirty || this.profileForm.controls.bloodPressureMax.dirty) {
-                <span style="color: red;" class="material-symbols-outlined">blood_pressure</span>
+            <span style="color: red;" class="material-symbols-outlined">blood_pressure</span>
             } @else {
-                <span class="material-symbols-outlined">blood_pressure</span>
+            <span class="material-symbols-outlined">blood_pressure</span>
             }
             <div class="row">
                 <mat-slider min="0" max="200" step="1" discrete>
                     <input matSliderThumb formControlName="pulse">
                 </mat-slider>
                 @if (this.profileForm.controls.pulse.dirty) {
-                    <mat-icon color="warn">favorite</mat-icon>
+                <span style="color: red;" class="material-symbols-outlined">
+                    monitor_heart
+                </span>
                 } @else {
-                    <mat-icon>favorite</mat-icon>
+                <span class="material-symbols-outlined">
+                    monitor_heart
+                </span>
                 }
             </div>
-            <span class="material-symbols-outlined">
-                oxygen_saturation
-                </span>
             <mat-slider min="0" max="100" step="1" discrete>
                 <input matSliderThumb formControlName="oxygen">
             </mat-slider>
+            @if (profileForm.controls.oxygen.dirty) {
+            <span style="color: red;" class="material-symbols-outlined">
+                oxygen_saturation
+            </span>
+            }@else {
+            <span class="material-symbols-outlined">
+                oxygen_saturation
+            </span>
+
+            }
         </div>
         <mat-tab-group [selectedIndex]="this.tabIndex" dynamicHeight>
             <mat-tab label="Medicamentos">
                 <ng-template mat-tab-label>
                     <span style="width: 40px;" class="material-symbols-outlined">
                         prescriptions
-                    </span>    
+                    </span>
                     Medicamentos
-                  </ng-template>
-                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento" type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon> </button>
+                </ng-template>
+                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento"
+                    type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon> </button>
                 <app-medicamentos [uuid]="this.uuid"></app-medicamentos>
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
                     <span style="width: 40px;" class="material-symbols-outlined">
                         medical_information
-                    </span>    
+                    </span>
                     Historias
-                  </ng-template>
-                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia" type="button" (click)="agregarHistoria()"><mat-icon>add</mat-icon></button>
+                </ng-template>
+                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia"
+                    type="button" (click)="agregarHistoria()"><mat-icon>add</mat-icon></button>
                 <app-table-history [uuid]="this.uuid"></app-table-history>
             </mat-tab>
         </mat-tab-group>

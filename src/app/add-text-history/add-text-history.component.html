@@ -1,1 +1,23 @@
-<p>add-text-history works!</p>
+<h1 matDialogTitle>Lista de Medicamentos</h1>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" #form="ngForm">
+    <mat-dialog-content>
+        @for (item of arrayMedicamentos; track $index; ) {
+        <div class="row">
+            <mat-form-field style="padding-left: 10px;">
+                <input matInput formControlName="medicamento{{$index}}" type="text" required placeholder="Medicamento">
+                <span matPrefix></span>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="hora{{$index}}" [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-checkbox formControlName="seleccionado{{$index}}" color="primary"></mat-checkbox>
+        </div>
+        }
+    </mat-dialog-content>
+    <mat-dialog-actions [attr.align]="'start'">
+        <button mat-button matDialogClose>Cerrar</button>
+        <button mat-button type="submit">Copiar a la historia</button>
+    </mat-dialog-actions>
+</form>
