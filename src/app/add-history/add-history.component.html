@@ -1,5 +1,5 @@
 <mat-card>
-    <button mat-icon-button (click)="addText()" color="primary">
+    <button mat-fab (click)="addText()" color="primary">
         <span class="material-symbols-outlined">
             prescriptions
             </span>
@@ -14,9 +14,9 @@
                     <mat-datepicker-toggle [disabled]="true" matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker [disabled]="true" #picker></mat-datepicker>
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field [style.fontSize]="'20px'">
                     <mat-label>Historia</mat-label>
-                    <textarea rows="10" matInput formControlName="history"></textarea>
+                    <textarea  rows="10" matInput formControlName="history"></textarea>
                 </mat-form-field>
             </div>
         </mat-card-content>

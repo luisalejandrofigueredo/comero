@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Generado por la IA</h2>
+<mat-dialog-content>
+    <form [formGroup]="profileForm" >
+        <mat-form-field   class="example-full-width"  appearance="fill">
+            <mat-label>Generado por la IA</mat-label>
+            <textarea cols="120" rows="10" matInput formControlName="history" placeholder=""></textarea>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button [mat-dialog-close]="this.profileForm.controls.history.value">Pasar a la historia</button>
+</mat-dialog-actions>

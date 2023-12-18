@@ -1,5 +1,4 @@
 import { Injectable,inject,NgZone } from '@angular/core';
-import { Auth } from "@angular/fire/auth";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import {
@@ -15,7 +14,6 @@ export class AuthService {
   private angularFireStore=inject(AngularFirestore);
   private angularFireAuth=inject(AngularFireAuth);
   private router=inject(Router);
-  private auth=inject(Auth);
   private userData: any;
 
   constructor () {
@@ -67,7 +65,7 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null ? true : false;
+    return user !== null && user.emailVerified !== false ? true : false;
   }
 
   SignOut() {
@@ -79,6 +77,7 @@ export class AuthService {
 
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      console.log('res google:',res)
       this.router.navigate(['']);
     });
   }

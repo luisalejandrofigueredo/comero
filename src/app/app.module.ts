@@ -36,7 +36,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from "@angular/material/select";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
@@ -54,6 +55,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from "../environments/environment";
 import { CustomMatPaginatorIntl } from './custompaginator';
 import { AddTextHistoryComponent } from './add-text-history/add-text-history.component';
+import { AddIaTextComponent } from './add-ia-text/add-ia-text.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -77,7 +79,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     EditHistoryComponent,
     ComPythonComponent,
     LoginComponent,
-    AddTextHistoryComponent
+    AddTextHistoryComponent,
+    AddIaTextComponent
   ],
   imports: [
     BrowserModule,
@@ -108,6 +111,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatProgressBarModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
   ],
@@ -115,10 +119,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
   { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },
   { provide: MAT_DATE_LOCALE, useValue: 'sp-ES' },
   { provide: LOCALE_ID, useValue: 'es' },
-  { provide: FIREBASE_OPTIONS, useValue: environment.firebase },{
-  provide: MatPaginatorIntl, 
-  useClass: CustomMatPaginatorIntl
-}
+  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }, {
+    provide: MatPaginatorIntl,
+    useClass: CustomMatPaginatorIntl
+  }
   ],
   bootstrap: [AppComponent]
 })

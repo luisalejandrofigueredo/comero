@@ -19,7 +19,7 @@
         @if (compareDate(row.date,date)) {
           <mat-icon (click)="edit(row.id)">edit</mat-icon>
         }@else {
-          <mat-icon color="warn">edit</mat-icon>
+          <mat-icon (click)="edit(row.id)" color="warn">edit</mat-icon>
         } 
       </td>
     </ng-container>

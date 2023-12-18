@@ -9,8 +9,9 @@ export interface DoctorDashboardItem {
   id:string,
   bloodPressureMax:number,
   bloodPressureMin:number,
-  pulse:number
-}
+  pulse:number,
+  oxygen:number,
+} 
 
 // TODO: replace this with real data from your application
 
@@ -81,7 +82,8 @@ export class DoctorDashboardDataSource extends DataSource<DoctorDashboardItem> {
         case 'bloodPressureMax': return compare(+a.bloodPressureMax, +b.bloodPressureMax, isAsc);
         case 'bloodPressureMin': return compare(+a.bloodPressureMin, +b.bloodPressureMin, isAsc);
         case 'id': return compare(a.id, b.id, isAsc);
-        case 'pulse': return compare(+a.pulse,+b.pulse,isAsc)
+        case 'pulse': return compare(+a.pulse,+b.pulse,isAsc);
+        case 'oxygen': return compare(+a.oxygen,+b.oxygen,isAsc)
         default: return 0;
       }
     });
