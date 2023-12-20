@@ -22,6 +22,7 @@ export class AddHistoryComponent implements OnInit, OnDestroy {
   historyService = inject(HistoryService);
   private route$: Subscription | undefined;
   private uuid!: string;
+  private historyService$:Subscription|undefined;
   ngOnInit(): void {
     this.route$ = this.route.params.subscribe((value: Params) => {
       this.uuid = value['id'];
@@ -29,7 +30,7 @@ export class AddHistoryComponent implements OnInit, OnDestroy {
     });
   }
   saveDialog() {
-    this.historyService.addHistory({
+     this.historyService$=this.historyService.addHistory({
       date: this.profileForm.controls.date.value.getTime(), idPatient: this.uuid,
       history:this.profileForm.controls.history.value
     }).subscribe({next:(historyDocument) => {
@@ -51,8 +52,8 @@ export class AddHistoryComponent implements OnInit, OnDestroy {
       })
   }
 
-
   ngOnDestroy(): void {
     this.route$?.unsubscribe();
+    this.historyService$?.unsubscribe();
   }
 }

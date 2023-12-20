@@ -72,6 +72,7 @@ export class ZoomComponent implements OnDestroy {
       }
     });
   }
+  
   close() {
     this.dialogRef.close();
   }

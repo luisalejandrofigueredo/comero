@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PatientDocument } from '../patient-document';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-crud-paciente',
   templateUrl: './crud-paciente.component.html',
@@ -23,6 +24,9 @@ export class CrudPacienteComponent implements AfterViewInit {
   private matSnackBar = inject(MatSnackBar);
   private router = inject(Router);
   public dataSource = new DoctorDashboardDataSource([]);
+  private vitalSingsService$:Subscription|undefined;
+  private vitalSingsServiceDel$:Subscription|undefined;
+  private vitalSingsServiceGet$:Subscription|undefined;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['firstName', 'lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse', 'oxygen', 'edit', 'delete'];
   constructor() { }
@@ -55,17 +59,23 @@ export class CrudPacienteComponent implements AfterViewInit {
   }
 
   deletePaciente(id: string) {
-    this.vitalSingsService.getPatient(id).subscribe((paciente) => {
+    this.vitalSingsService$=this.vitalSingsService.getPatient(id).subscribe((paciente) => {
       this.addPacienteDialog.open(YesNOComponent, { enterAnimationDuration: 500, disableClose: true, data: { action: 'Egresar', description: `Desea egresar a ${paciente.firstName} ${paciente.lastName}` } }).afterClosed().subscribe((respuesta: boolean) => {
         if (respuesta === true) {
-          this.vitalSingsService.deletePatient(id).subscribe((ok) => {
+          this.vitalSingsServiceDel$=this.vitalSingsService.deletePatient(id).subscribe((ok) => {
             this.matSnackBar.open('Paciente egresado', '', { duration: 500 });
-            this.vitalSingsService.getPatients().subscribe(pacientes => {
+            this.vitalSingsServiceGet$=this.vitalSingsService.getPatients().subscribe(pacientes => {
               this.refreshDataSource(pacientes);
             })
           });
         }
       });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.vitalSingsService$?.unsubscribe()
+    this.vitalSingsServiceDel$?.unsubscribe();
+    this.vitalSingsServiceGet$?.unsubscribe();
   }
 }

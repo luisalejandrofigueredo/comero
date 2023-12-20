@@ -56,6 +56,11 @@ import { environment } from "../environments/environment";
 import { CustomMatPaginatorIntl } from './custompaginator';
 import { AddTextHistoryComponent } from './add-text-history/add-text-history.component';
 import { AddIaTextComponent } from './add-ia-text/add-ia-text.component';
+import { ChatComponent } from './chat/chat.component';
+import { MessageChatComponent } from './message-chat/message-chat.component';
+import { ViewMessagesComponent } from './view-messages/view-messages.component';
+import { provideFirestore } from '@angular/fire/firestore';
+import { getFirestore } from 'firebase/firestore';
 
 registerLocaleData(localeEs, 'es');
 
@@ -80,7 +85,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     ComPythonComponent,
     LoginComponent,
     AddTextHistoryComponent,
-    AddIaTextComponent
+    AddIaTextComponent,
+    ChatComponent,
+    MessageChatComponent,
+    ViewMessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -112,8 +120,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatNativeDateModule,
     MatCheckboxModule,
     MatProgressBarModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [provideHttpClient(),
   { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },

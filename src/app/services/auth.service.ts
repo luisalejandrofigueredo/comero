@@ -47,6 +47,7 @@ export class AuthService {
   getUserData(){
     return this.userData
   }
+
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.angularFireStore.doc(
       `users/${user.uid}`
@@ -77,7 +78,6 @@ export class AuthService {
 
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      console.log('res google:',res)
       this.router.navigate(['']);
     });
   }

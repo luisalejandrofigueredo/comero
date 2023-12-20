@@ -1,0 +1,12 @@
+<p>Mensaje para:{{chatDocument?.name}}</p>
+<form [formGroup]="profileForm" (ngSubmit)="sendMessage()">
+    <mat-dialog-content>
+        <mat-form-field>
+            <input matInput placeholder="Mensaje" formControlName="message">
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button type="button" [mat-dialog-close]="false">Cancelar</button>
+        <button mat-button type="submit">Enviar</button>
+    </mat-dialog-actions>
+</form>

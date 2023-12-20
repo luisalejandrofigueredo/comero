@@ -1,15 +1,23 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from "../services/auth.service";
+import { ChatService } from "../services/chat.service";
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
+import { ChatDocument } from '../interfaces/chat-document';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   passwordVisible = false;
+  private matSnackBar = inject(MatSnackBar);
   public authService = inject(AuthService);
+  public chatService = inject(ChatService);
+  private chat$: Subscription | undefined;
+  private chatDelete$: Subscription | undefined;
   profileForm = new FormGroup({
     login: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     password: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
@@ -21,11 +29,26 @@ export class LoginComponent {
     await this.authService.SignIn(this.profileForm.controls.login.value, this.profileForm.controls.password.value)
   }
 
-  async logout(){
+  async logout() {
     await this.authService.SignOut()
+    this.chatDelete$ = this.chatService.deleteChat(this.chatService.chat_uuid).subscribe((subscribe) => {
+      this.chatService.logout();
+      this.matSnackBar.open('Logout', 'Acceso desactivado y borrado del chat',{duration:10000});
+    })
   }
 
-  async loginGoogle(){
-    await this.authService.GoogleAuth()
+  async loginGoogle() {
+    await this.authService.GoogleAuth().then(() => {
+      const { uid, displayName, photoURL } = this.authService.getUserData();
+      this.chat$ = this.chatService.addChat({ uid: uid, name: displayName, avatar: photoURL }).subscribe((sub: ChatDocument) => {
+        this.chatService.chat_uuid = sub.id;
+        this.matSnackBar.open('Login', 'Acceso concedido y agregado al chat',{duration:10000});
+      })
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.chat$?.unsubscribe();
+    this.chatDelete$?.unsubscribe();
   }
 }
