@@ -1,6 +1,6 @@
 export interface MessageDocument {
     "id": string,
-    "hour":number,
+    "hour":string,
     "to":string,
     "from":string,
     "message":string,

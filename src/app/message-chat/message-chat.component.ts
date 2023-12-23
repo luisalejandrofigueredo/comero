@@ -39,7 +39,7 @@ export class MessageChatComponent implements OnInit, OnDestroy {
 
   sendMessage() {
     this.chatServiceInsert$=this.messagesService.addMessage({
-      hour: new Date().getTime(),
+      hour: new Date().toISOString(),
       from: this.authService.getUserData()?.uid,
       to: this.data.id,
       message: this.profileForm.controls.message.value

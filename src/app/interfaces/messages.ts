@@ -1,6 +1,6 @@
 export interface Messages {
     "id"?: string,
-    "hour":number,
+    "hour":string,
     "to":string,
     "from":string,
     "message":string,

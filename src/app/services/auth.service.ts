@@ -31,7 +31,7 @@ export class AuthService {
     this.angularFireAuth.idToken.subscribe({next:(token: string | null) => {
       //handle idToken changes here. Note, that user will be null if there is no currently logged in user.
       this.token=token;
-      console.log('nuevo token',this.token);
+      //console.log('nuevo token',this.token);
   }})
   }
 

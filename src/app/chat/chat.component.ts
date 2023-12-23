@@ -26,15 +26,15 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   openNewMessages(uid:string) {
-    this.matDialog.open(MessageChatComponent,{data: {id:uid}})
-
+    this.matDialog.open(MessageChatComponent,{data: {id:uid}}).afterClosed().subscribe(()=>{
+      this.from=uid;
+      this.to=this.authService.getUserData().uid
+    })
   }
 
   verMensajes(uid:string){
     this.from=uid;
     this.to=this.authService.getUserData().uid
-    console.log('uid',uid);
-    console.log('uid',this.authService.getUserData().uid);
   }
 
 
