@@ -4,15 +4,22 @@
             @for (item of documents; track $index) {
             @if (item.uid !==this.authService.getUserData().uid) {
             <div class="row">
-                <div class="imagen-redondeada">
-                    <img [src]="item.avatar" alt="">
-                </div>
-                <p style="padding-left: 20px;padding-right: 20px;" >{{item.name}}</p>
-                <button mat-fab (click)=(openMessages(item.id))><mat-icon>chat</mat-icon></button>
+                <button mat-fab matTooltip="Ver mensajes" type="button" (click)="verMensajes(item.uid)">
+                    <div class="imagen-redondeada">
+                        <img [src]="item.avatar" alt="">
+                    </div>
+                </button>
+                <p style="padding-left: 20px;padding-right: 20px;">{{item.name}}</p>
+                <button matTooltip="Enviar mensaje" mat-fab (click)="openNewMessages(item.uid)"><mat-icon>chat</mat-icon></button>
             </div>
             }
             }
         </div>
     </mat-card-content>
 </mat-card>
-<app-view-messages></app-view-messages>
+@defer () {
+    <app-view-messages [from]="from" [to]="to"></app-view-messages>
+}
+@loading {
+    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+}

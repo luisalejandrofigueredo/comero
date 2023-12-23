@@ -1,5 +1,6 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgOptimizedImage } from '@angular/common'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.co
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { TableHistoryComponent } from './table-history/table-history.component';
 import localeEs from '@angular/common/locales/es';
@@ -120,6 +122,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatNativeDateModule,
     MatCheckboxModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
+    NgOptimizedImage,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -128,7 +132,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
   { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },
   { provide: MAT_DATE_LOCALE, useValue: 'sp-ES' },
   { provide: LOCALE_ID, useValue: 'es' },
-  { provide: FIREBASE_OPTIONS, useValue: environment.firebase }, {
+  { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, {
     provide: MatPaginatorIntl,
     useClass: CustomMatPaginatorIntl
   }

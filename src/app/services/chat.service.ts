@@ -1,15 +1,16 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ChatDocument } from '../interfaces/chat-document';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-
+import {AuthService  } from "./auth.service";
 @Injectable({
   providedIn: 'root'
 })
 
 export class ChatService {
-  private httpClient = inject(HttpClient)
+  private httpClient = inject(HttpClient);
+  private authService=inject(AuthService);
   private chatID: string = '';
 
   constructor() {
@@ -33,21 +34,38 @@ export class ChatService {
   }
 
   addChat(chat: { uid: string, name: string, avatar: string }): Observable<ChatDocument> {
-    return this.httpClient.post<ChatDocument>(environment.url + '/chat/add', chat)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.authService.token}`
+    });
+    console.log('token',this.authService.token)
+    return this.httpClient.post<ChatDocument>(environment.url + '/chat/add', chat,{headers:headers})
   }
 
   getChats(): Observable<ChatDocument[]> {
-    return this.httpClient.get<ChatDocument[]>(environment.url + '/chat/getAll')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.authService.token}`
+    });
+    return this.httpClient.get<ChatDocument[]>(environment.url + '/chat/getAll',{headers:headers})
   }
 
   deleteChat(id: string): Observable<ChatDocument> {
     const params = new HttpParams().set('id', id);
-    return this.httpClient.delete<ChatDocument>(environment.url + '/chat/delete',{params:params})
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.authService.token}`
+    });
+    return this.httpClient.delete<ChatDocument>(environment.url + '/chat/delete',{params:params, headers:headers})
   }
 
   getChat(id:string): Observable<ChatDocument> {
     const params = new HttpParams().set('id', id);
-    return this.httpClient.get<ChatDocument>(environment.url + '/chat/getOne',{params})
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.authService.token}`
+    });
+    return this.httpClient.get<ChatDocument>(environment.url + '/chat/getOne',{params,headers:headers})
   }
 
 }

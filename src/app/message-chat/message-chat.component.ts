@@ -17,26 +17,31 @@ export class MessageChatComponent implements OnInit, OnDestroy {
   public messagesService = inject(MessagesService);
   public chatDocument: ChatDocument | undefined;
   public chatService$: Subscription | undefined;
+  public chatServiceInsert$: Subscription | undefined;
   public authService= inject(AuthService);
   profileForm = new FormGroup({
     message: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
   });
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: string }, private dialogRef: MatDialogRef<MessageChatComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: string }, private dialogRef: MatDialogRef<MessageChatComponent>) { 
+  }
+
   ngOnInit(): void {
     this.chatService$ = this.chatService.getChat(this.data.id).subscribe((chatDocument: ChatDocument) => {
       this.chatDocument = chatDocument;
     })
+    
   }
 
   ngOnDestroy(): void {
     this.chatService$?.unsubscribe();
+    this.chatServiceInsert$?.unsubscribe();
   }
 
   sendMessage() {
-    this.messagesService.addMessage({
+    this.chatServiceInsert$=this.messagesService.addMessage({
       hour: new Date().getTime(),
       from: this.authService.getUserData()?.uid,
-      to: this.chatDocument?.uid!,
+      to: this.data.id,
       message: this.profileForm.controls.message.value
     }).subscribe((_document)=>{
       this.dialogRef.close(true);

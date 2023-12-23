@@ -33,18 +33,12 @@ export class LoginComponent implements OnDestroy {
     await this.authService.SignOut()
     this.chatDelete$ = this.chatService.deleteChat(this.chatService.chat_uuid).subscribe((subscribe) => {
       this.chatService.logout();
-      this.matSnackBar.open('Logout', 'Acceso desactivado y borrado del chat',{duration:10000});
+      this.matSnackBar.open('Logout', 'Acceso desactivado y borrado del chat', { duration: 10000 });
     })
   }
 
   async loginGoogle() {
-    await this.authService.GoogleAuth().then(() => {
-      const { uid, displayName, photoURL } = this.authService.getUserData();
-      this.chat$ = this.chatService.addChat({ uid: uid, name: displayName, avatar: photoURL }).subscribe((sub: ChatDocument) => {
-        this.chatService.chat_uuid = sub.id;
-        this.matSnackBar.open('Login', 'Acceso concedido y agregado al chat',{duration:10000});
-      })
-    });
+    await this.authService.GoogleAuth();
   }
 
   ngOnDestroy(): void {

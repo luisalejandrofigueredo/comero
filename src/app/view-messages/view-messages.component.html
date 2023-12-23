@@ -1,3 +1,7 @@
-@for (item of elementos ; track $index) {
-    <p>{{item.hour | date:'shortTime'}} prueba {{item.message}}</p>
+@for (item of elementos ; track item.hour) {
+@if (item.from===this.authService.getUserData().uid) {
+    <p>{{item.hour | date:'shortTime'}} {{item.message}}</p>
+}@else {
+    <p style="padding-left: 50px;" >{{item.message}} {{item.hour | date:'shortTime'}}</p>
+}
 }

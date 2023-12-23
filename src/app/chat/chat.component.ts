@@ -15,37 +15,26 @@ export class ChatComponent implements OnInit, OnDestroy {
   public documents: any = [];
   public chatService$: Subscription | undefined;
   public matDialog=inject(MatDialog);
-  public authService=inject(AuthService)
+  public authService=inject(AuthService);
+  public from:string="";
+  public to:string="";
   
   ngOnInit(): void {
     this.chatService$ = this.chatService.getChats().subscribe((documents) => {
-      const newDocuments=this.eliminarCampos(documents);
-      const arraySinDuplicados = this.eliminarDuplicados(newDocuments,"uid","avatar")
-      console.log('sin duplicados',arraySinDuplicados)
-      this.documents = arraySinDuplicados;
+      this.documents = documents;
     });
   }
 
-  eliminarDuplicados(arr:any, prop1:any, prop2:any) {
-    return arr.filter((obj:any, index:any, self:any) =>
-      index === self.findIndex((o:any) =>
-        o[prop1] === obj[prop1] && o[prop2] === obj[prop2]
-      )
-    );
+  openNewMessages(uid:string) {
+    this.matDialog.open(MessageChatComponent,{data: {id:uid}})
+
   }
 
-  eliminarCampos(array:ChatDocument[]):any {
-    var newArray=[]
-    for (let index = 0; index < array.length; index++) {
-      var element =   JSON.parse(JSON.stringify(array[index]));
-      delete element.id,
-      delete element._attachments,
-      delete element._deleted
-      delete element._meta
-      delete element._rev
-      newArray.push(element)
-    }
-    return newArray;
+  verMensajes(uid:string){
+    this.from=uid;
+    this.to=this.authService.getUserData().uid
+    console.log('uid',uid);
+    console.log('uid',this.authService.getUserData().uid);
   }
 
 

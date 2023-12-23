@@ -5,16 +5,17 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/login">Login</a>
       <a mat-list-item routerLink="/crudPaciente"><span class="material-symbols-outlined">
-        inpatient
-      </span><span  class="material-symbols-outlined">
-        outpatient_med
+          inpatient
+        </span><span class="material-symbols-outlined">
+          outpatient_med
         </span>Administración</a>
       <a mat-list-item routerLink="doctorDashboard"><span class="material-symbols-outlined">
-        monitor_heart
+          monitor_heart
         </span>Monitor</a>
-        <a mat-list-item routerLink="chat"><span class="material-symbols-outlined">
+      <a mat-list-item routerLink="chat"><span class="material-symbols-outlined">
           chat
-          </span>Chat</a> 
+        </span>Chat</a>
+      <a mat-list-item routerLink="comPython">test api</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -26,7 +27,7 @@
       <span [matBadge]="this.vitalSignsService.count()" matBadgeOverlap="true">Comero</span>
       <span class="material-symbols-outlined">
         emergency
-        </span>
+      </span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
