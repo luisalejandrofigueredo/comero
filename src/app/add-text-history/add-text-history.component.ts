@@ -19,7 +19,6 @@ export class AddTextHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.medicamentosService.getMedicamentos(this.data.uuid).subscribe({
       next: (array) => {
-        console.log('array',array);
         for (let index = 0; index < array.length; index++) {
           this.profileForm.addControl(`medicamento${index}`, new FormControl({value:array[index].name,disabled:true},{nonNullable:true}))
           this.profileForm.addControl(`hora${index}`, new FormControl<Date>({value:new Date(array[index].hora),disabled:true},{nonNullable:true}))

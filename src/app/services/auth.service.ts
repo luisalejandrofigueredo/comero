@@ -9,6 +9,8 @@ import { User } from '../interfaces/user';
 import * as auth from 'firebase/auth';
 import { getAuth } from '@angular/fire/auth';
 import { Auth, idToken } from '@angular/fire/auth';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +20,8 @@ export class AuthService {
   private router = inject(Router);
   private userData: any;
   public token: string | null = null;
-  public userUid:string=''
+  public userUid: string = ''
+
   constructor() {
     this.angularFireAuth.user.subscribe((user) => {
       if (user) {
@@ -31,12 +34,12 @@ export class AuthService {
             console.log('Error al refrescar el token');
           });
         }, 50 * 60 * 1000); // 50 minutos en milisegundos      }
-        this.userUid=user.uid;
+        this.userUid = user.uid;
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
       } else {
         localStorage.removeItem('user');
-        this.userUid="";
+        this.userUid = "";
         this.router.navigate(['']);
       }
     });

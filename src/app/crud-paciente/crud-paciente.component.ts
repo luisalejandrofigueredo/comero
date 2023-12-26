@@ -3,6 +3,7 @@ import { MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { VitalSignsService } from '../services/vital-signs.service';
+import { EstadoPacientesService } from "../services/estado-pacientes.service";
 import { DoctorDashboardDataSource, DoctorDashboardItem } from '../doctor-dashboard/doctor-dashboard-datasource';
 import { YesNOComponent } from "../yes-no/yes-no.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,6 +23,7 @@ export class CrudPacienteComponent implements AfterViewInit {
   private vitalSingsService = inject(VitalSignsService)
   private addPacienteDialog = inject(MatDialog);
   private matSnackBar = inject(MatSnackBar);
+  private estadoPaciente= inject(EstadoPacientesService)
   private router = inject(Router);
   public dataSource = new DoctorDashboardDataSource([]);
   private vitalSingsService$:Subscription|undefined;
@@ -40,6 +42,7 @@ export class CrudPacienteComponent implements AfterViewInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
+      this.estadoPaciente.update(data.length);
     })
   }
 

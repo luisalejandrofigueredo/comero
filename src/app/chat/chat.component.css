@@ -34,4 +34,8 @@
     height: auto; /* Se ajusta la altura automáticamente para mantener la proporción */
     display: block; /* Elimina espacios vacíos que puedan quedar alrededor de la imagen */
   }
+
+  .full-width {
+    width: 80%;
+  }
   

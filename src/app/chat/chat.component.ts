@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageChatComponent  } from "../message-chat/message-chat.component";
 import { AuthService } from '../services/auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MessagesService } from '../services/messages.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -18,7 +20,13 @@ export class ChatComponent implements OnInit, OnDestroy {
   public authService=inject(AuthService);
   public from:string="";
   public to:string="";
-  
+  public viewMessages:boolean=false;
+  public getChat$: Subscription | undefined;
+  public currentChat:ChatDocument|undefined;
+  public messagesService = inject(MessagesService);
+  profileForm = new FormGroup({
+    message: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
+  })
   ngOnInit(): void {
     this.chatService$ = this.chatService.getChats().subscribe((documents) => {
       this.documents = documents;
@@ -33,8 +41,29 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   verMensajes(uid:string){
-    this.from=uid;
-    this.to=this.authService.getUserData().uid
+    this.getChat$=this.chatService.getChat(uid).subscribe((chat:ChatDocument)=>{
+      this.from=uid;
+      this.to=this.authService.getUserData().uid
+      this.currentChat=chat;
+      this.viewMessages=true;
+    })
+  }
+
+
+  enviar(){
+    this.messagesService.addMessage({to:this.to,from:this.from,message:this.profileForm.controls.message.value,hour:new Date().toISOString()}).subscribe(()=>{
+      this.to=this.to;
+      this.from=this.from;
+      this.profileForm.controls.message.setValue('');
+    })
+
+
+  }
+
+  verContactos(){
+    this.from="";
+    this.to=""
+    this.viewMessages=false;
   }
 
 

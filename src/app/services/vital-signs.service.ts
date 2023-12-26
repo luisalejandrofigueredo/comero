@@ -5,12 +5,14 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { PatientDocument } from "../patient-document";
 import { AuthService } from './auth.service';
+import { EstadoPacientesService } from "./estado-pacientes.service";
 @Injectable({
   providedIn: 'root'
 })
 export class VitalSignsService {
-  public count: WritableSignal<number> = signal(0);
+   
   private authService=inject(AuthService);
+  private estadoPaciente=inject(EstadoPacientesService)
   constructor(private httpClient: HttpClient) { }
   getPatient(id: string): Observable<Patient> {
     const params = new HttpParams().set('id', id)
@@ -22,13 +24,13 @@ export class VitalSignsService {
   }
   
   addPatient(patient: Patient): Observable<Patient> {
-    this.count.update((count) => count + 1)
     patient.firstName=encodeURI(patient.firstName);
     patient.lastName=encodeURI(patient.lastName)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authService.token}`
     });
+    this.estadoPaciente.update(this.estadoPaciente.nPat+1);
     return this.httpClient.post<Patient>(environment.url + '/emergency/add', patient,{headers:headers})
   }
 
@@ -38,7 +40,7 @@ export class VitalSignsService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authService.token}`
     });
-    this.count.update((count) => count - 1);
+    this.estadoPaciente.update(this.estadoPaciente.nPat-1);
     return this.httpClient.delete<Patient>(environment.url + '/emergency/delete', { params,headers });
   }
 
