@@ -10,13 +10,26 @@
 }
 
 .imagen-redondeada {
+    width: 25px; /* Ancho deseado */
+    height: 25px; /* Alto deseado */
+    border-radius: 50%; /* Se establece el radio al 50% para hacer la imagen completamente redonda */
+    overflow: hidden; /* Esto asegura que la imagen se ajuste al borde redondeado */
+  }
+  
+  .imagen-redondeada img {
+    width: 100%; /* La imagen se ajusta al tamaño del contenedor redondeado */
+    height: auto; /* Se ajusta la altura automáticamente para mantener la proporción */
+    display: block; /* Elimina espacios vacíos que puedan quedar alrededor de la imagen */
+  }
+
+  .imagen-redondeada-fab {
     width: 50px; /* Ancho deseado */
     height: 50px; /* Alto deseado */
     border-radius: 50%; /* Se establece el radio al 50% para hacer la imagen completamente redonda */
     overflow: hidden; /* Esto asegura que la imagen se ajuste al borde redondeado */
   }
   
-  .imagen-redondeada img {
+  .imagen-redondeada-fab img {
     width: 100%; /* La imagen se ajusta al tamaño del contenedor redondeado */
     height: auto; /* Se ajusta la altura automáticamente para mantener la proporción */
     display: block; /* Elimina espacios vacíos que puedan quedar alrededor de la imagen */

@@ -1,4 +1,4 @@
-import { Injectable,inject,NgZone } from '@angular/core';
+import { Injectable, inject, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import {
@@ -13,26 +13,40 @@ import { Auth, idToken } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthService {
-  private angularFireStore=inject(AngularFirestore);
-  private angularFireAuth=inject(AngularFireAuth);
-  private router=inject(Router);
+  private angularFireStore = inject(AngularFirestore);
+  private angularFireAuth = inject(AngularFireAuth);
+  private router = inject(Router);
   private userData: any;
-  public token:string|null=null;
-
-  constructor () {
-    this.angularFireAuth.authState.subscribe((user) => {
+  public token: string | null = null;
+  public userUid:string=''
+  constructor() {
+    this.angularFireAuth.user.subscribe((user) => {
       if (user) {
+        setInterval(() => {
+          user.getIdToken(true).then(() => {
+            // El token ha sido refrescado
+            console.log('Token refrescado');
+          }).catch((error) => {
+            // Error al refrescar el token
+            console.log('Error al refrescar el token');
+          });
+        }, 50 * 60 * 1000); // 50 minutos en milisegundos      }
+        this.userUid=user.uid;
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
       } else {
-        localStorage.setItem('user', 'null');
+        localStorage.removeItem('user');
+        this.userUid="";
+        this.router.navigate(['']);
       }
     });
-    this.angularFireAuth.idToken.subscribe({next:(token: string | null) => {
-      //handle idToken changes here. Note, that user will be null if there is no currently logged in user.
-      this.token=token;
-      //console.log('nuevo token',this.token);
-  }})
+    this.angularFireAuth.idToken.subscribe({
+      next: (token: string | null) => {
+        //handle idToken changes here. Note, that user will be null if there is no currently logged in user.
+        this.token = token;
+        //console.log('nuevo token',this.token);
+      }
+    })
   }
 
   // Sign in with email/password
@@ -52,7 +66,7 @@ export class AuthService {
       });
   }
 
-  getUserData(){
+  getUserData() {
     return this.userData
   }
 
@@ -73,7 +87,7 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const user = (localStorage.getItem('user') !== null) ? JSON.parse(localStorage.getItem('user')!) : null;
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
@@ -95,7 +109,7 @@ export class AuthService {
     return this.angularFireAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.angularFireAuth.currentUser.then(user=>{
+        this.angularFireAuth.currentUser.then(user => {
         })
         this.SetUserData(result.user);
         this.router.navigate(['']);

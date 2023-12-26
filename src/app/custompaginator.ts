@@ -9,7 +9,6 @@ export class CustomMatPaginatorIntl extends MatPaginatorIntl {
   }
 
   getAndInitTranslations() {
-
       this.itemsPerPageLabel = "Items por página";
       this.nextPageLabel = "Proxima página";
       this.previousPageLabel = "Página anterior";
@@ -19,7 +18,7 @@ export class CustomMatPaginatorIntl extends MatPaginatorIntl {
 
  override getRangeLabel = (page: number, pageSize: number, length: number) =>  {
     if (length === 0 || pageSize === 0) {
-      return `0 / ${length}`;
+      return `0 de ${length}`;
     }
     length = Math.max(length, 0);
     const startIndex = page * pageSize;

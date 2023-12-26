@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { MessagesService } from "../services/messages.service";
 import { Observable, Subscription } from 'rxjs';
 import { MessageDocument } from '../interfaces/messageDocument';
@@ -9,7 +9,7 @@ import { ChatDocument } from '../interfaces/chat-document';
 @Component({
   selector: 'app-view-messages',
   templateUrl: './view-messages.component.html',
-  styleUrl: './view-messages.component.css'
+  styleUrl: './view-messages.component.css',
 })
 export class ViewMessagesComponent implements OnInit, OnDestroy,OnChanges {
   public messagesService = inject(MessagesService);
@@ -25,13 +25,13 @@ export class ViewMessagesComponent implements OnInit, OnDestroy,OnChanges {
   ngOnInit(): void {
     this.messagesService$ = this.messagesService.getMessagesUserToUser(this.to, this.from).subscribe((document) => {
       this.elementos = document;
-      console.log('elementos 1',this.elementos)
     })
     this.messagesEventSubscription$ = this.messageEvent$.subscribe({
       next: (chat) => {
         const messagesService$ = this.messagesService.getMessagesUserToUser(this.to,this.from).subscribe((document) => {
           this.elementos = document;
-          console.log('elementos 2',this.elementos)
+          console.log('document',this.elementos);
+          console.log('User data',this.authService.userUid);
         })
       }
     }
@@ -41,9 +41,6 @@ export class ViewMessagesComponent implements OnInit, OnDestroy,OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const messagesService$ = this.messagesService.getMessagesUserToUser(this.to,this.from).subscribe((document) => {
       this.elementos = document;
-      console.log('elementos 3',this.to)
-      console.log('elementos 3',this.from)
-      console.log('elementos 3',this.elementos)
     })
   }
 

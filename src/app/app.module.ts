@@ -38,12 +38,12 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { TableHistoryComponent } from './table-history/table-history.component';
 import localeEs from '@angular/common/locales/es';
@@ -63,6 +63,7 @@ import { MessageChatComponent } from './message-chat/message-chat.component';
 import { ViewMessagesComponent } from './view-messages/view-messages.component';
 import { provideFirestore } from '@angular/fire/firestore';
 import { getFirestore } from 'firebase/firestore';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 registerLocaleData(localeEs, 'es');
 
@@ -124,6 +125,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatProgressBarModule,
     MatProgressSpinnerModule,
     NgOptimizedImage,
+    ScrollingModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

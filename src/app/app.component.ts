@@ -14,7 +14,7 @@ import { ChatDocument } from "./interfaces/chat-document";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'comero';
+  title = 'Comero';
   private vitalSingsService = inject(VitalSignsService);
   private socket = inject(Socket);
   private messagesEventSubscription$: Subscription | undefined;
@@ -24,8 +24,9 @@ export class AppComponent implements OnInit, OnDestroy {
   private chatService = inject(ChatService);
   private angularFireAuth = inject(AngularFireAuth);
   private chat$: Subscription | undefined;
+  private angularFireAuth$: Subscription | undefined;
   ngOnInit(): void {
-    this.angularFireAuth.idToken.subscribe({
+    this.angularFireAuth$=this.angularFireAuth.idToken.subscribe({
       next: (token: string | null) => {
         //handle idToken changes here. Note, that user will be null if there is no currently logged in user
         if (token !== null) {
@@ -34,8 +35,8 @@ export class AppComponent implements OnInit, OnDestroy {
             next: (sub: ChatDocument) => {
               if (sub !== null) {
                 this.chatService.chat_uuid = sub.uid;
+                this.matSnackBar.open('Login', 'Acceso concedido y agregado al chat', { duration: 10000 });
               }
-              this.matSnackBar.open('Login', 'Acceso concedido y agregado al chat', { duration: 10000 });
             }
           })
         }
@@ -43,8 +44,17 @@ export class AppComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnDestroy(): void {
+   async ngOnDestroy(): Promise<void> {
+    await this.authService.SignOut().then((_result)=>{
+      this.unSubscribe();
+    }).catch((_reason)=>{
+      this.unSubscribe();
+    })
+  }
+  
+  unSubscribe(){
     this.messagesEventSubscription$?.unsubscribe();
     this.chat$?.unsubscribe();
+    this.angularFireAuth$?.unsubscribe();
   }
 }
