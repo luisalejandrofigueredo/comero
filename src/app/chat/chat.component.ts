@@ -72,7 +72,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   openMessages(id:string) {
-    console.log('chat component open id',id)
     this.matDialog.open(MessageChatComponent,{data:{id:id}}).afterOpened().subscribe((_result:any)=>{
       
 

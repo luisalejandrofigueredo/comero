@@ -64,6 +64,7 @@ import { ViewMessagesComponent } from './view-messages/view-messages.component';
 import { provideFirestore } from '@angular/fire/firestore';
 import { getFirestore } from 'firebase/firestore';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ConfSerialsComponent } from './conf-serials/conf-serials.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -91,7 +92,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     AddIaTextComponent,
     ChatComponent,
     MessageChatComponent,
-    ViewMessagesComponent
+    ViewMessagesComponent,
+    ConfSerialsComponent
   ],
   imports: [
     BrowserModule,

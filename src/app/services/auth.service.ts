@@ -28,10 +28,8 @@ export class AuthService {
         setInterval(() => {
           user.getIdToken(true).then(() => {
             // El token ha sido refrescado
-            console.log('Token refrescado');
           }).catch((error) => {
             // Error al refrescar el token
-            console.log('Error al refrescar el token');
           });
         }, 50 * 60 * 1000); // 50 minutos en milisegundos      }
         this.userUid = user.uid;

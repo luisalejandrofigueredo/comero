@@ -30,8 +30,6 @@ export class ViewMessagesComponent implements OnInit, OnDestroy,OnChanges {
       next: (chat) => {
         const messagesService$ = this.messagesService.getMessagesUserToUser(this.to,this.from).subscribe((document) => {
           this.elementos = document;
-          console.log('document',this.elementos);
-          console.log('User data',this.authService.userUid);
         })
       }
     }

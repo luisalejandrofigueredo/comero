@@ -38,7 +38,6 @@ export class ChatService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authService.token}`
     });
-    console.log('token',this.authService.token)
     return this.httpClient.post<ChatDocument>(environment.url + '/chat/add', chat,{headers:headers})
   }
 
