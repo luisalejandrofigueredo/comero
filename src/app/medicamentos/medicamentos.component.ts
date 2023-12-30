@@ -15,11 +15,15 @@ export class MedicamentosComponent implements OnInit,OnChanges{
   matSnackBar = inject(MatSnackBar);
   medicamentosDialog= inject(MatDialog);
   medicamentos: MedicamentosDocument[] = [];
+  currentTime=Date.now();
   
   ngOnInit(): void {
     this.medicamentosService.getMedicamentos(this.uuid).subscribe((medicamentos: MedicamentosDocument[]) => {
       this.medicamentos = medicamentos;
     })
+    setInterval(() => {
+      this.currentTime =Date.now();
+    }, 10000);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

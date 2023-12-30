@@ -1,4 +1,3 @@
-@defer () {
 <mat-chip-listbox>
     @for (item of medicamentos; track item.item) {
     <mat-chip color="accent" (removed)="remove(item.id,item.name)">
@@ -28,16 +27,13 @@
         </span>
         }
         }
-        {{item.name}} {{item.canty}} {{item.units}} {{item.hora | date:'medium'}}
-        <button matChipRemove [attr.aria-label]='"delete"'>
+        {{item.name}} {{item.canty}} {{item.units}} {{item.hora | date:'d,MMM y, h:mm a'}}
+        @if( item.hora > currentTime-10*60*1000){ <button matChipRemove [attr.aria-label]='"delete"'>
             <mat-icon>cancel</mat-icon>
-        </button>
+            </button>
+            }
     </mat-chip>
     } @empty {
-    <p style="padding-left: 20px;text-align: center;">Sin medicación</p>  
-  }
+    <p style="padding-left: 20px;text-align: center;">Sin medicación</p>
+    }
 </mat-chip-listbox>
-}
-@loading {
-<p>Cargando los medicamentos</p>
-}

@@ -1,0 +1,28 @@
+<mat-card>
+    <form [formGroup]="profileForm" (ngSubmit)="saveDialog()" autocomplete="off">
+        <mat-card-content>
+            <div class="column">
+                <mat-form-field>
+                    <mat-label>Serial Port</mat-label>
+                    <input matInput type="text" formControlName="serial">
+                </mat-form-field>
+                <mat-form-field style="padding-left: 20px;">
+                    <mat-label>Signo Vital</mat-label>
+                    <mat-select matInput placeholder="Signo vital" formControlName="sign"  required>
+                        @for (signos of signosVitales; track signos) {
+                        <mat-option [value]="signos">{{signos}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field style="padding-left: 20px;">
+                    <mat-label>Cama</mat-label>
+                    <input matInput type="text" formControlName="bed">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button type="button" (click)="closeDialog()">Cancelar</button>
+            <button mat-button type="submit" [disabled]="!profileForm.valid || profileForm.controls.sign.hasError('required')">Agregar</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

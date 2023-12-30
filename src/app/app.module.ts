@@ -64,8 +64,9 @@ import { ViewMessagesComponent } from './view-messages/view-messages.component';
 import { provideFirestore } from '@angular/fire/firestore';
 import { getFirestore } from 'firebase/firestore';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { ConfSerialsComponent } from './conf-serials/conf-serials.component';
-
+import { ConfSerialCrudComponent } from './conf-serial-crud/conf-serial-crud.component';
+import { AddBedComponent } from './add-bed/add-bed.component';
+import { EditBedComponent } from './edit-bed/edit-bed.component';
 registerLocaleData(localeEs, 'es');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
@@ -93,7 +94,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     ChatComponent,
     MessageChatComponent,
     ViewMessagesComponent,
-    ConfSerialsComponent
+    ConfSerialCrudComponent,
+    AddBedComponent,
+    EditBedComponent
   ],
   imports: [
     BrowserModule,

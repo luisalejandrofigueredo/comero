@@ -1,0 +1,46 @@
+<button mat-fab (click)="addBed($event)" ><mat-icon>add</mat-icon></button>
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="serial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Serial Port</th>
+      <td mat-cell *matCellDef="let row">{{row.serial}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sign">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Signo Vital</th>
+      <td mat-cell *matCellDef="let row">{{row.sign}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="bed">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cama</th>
+      <td mat-cell *matCellDef="let row">{{row.bed}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Editar</th>
+      <td mat-cell *matCellDef="let row"><button mat-icon-button (click)="edit(row.id)"><mat-icon>edit</mat-icon></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrar</th>
+      <td mat-cell *matCellDef="let row"><button mat-icon-button (click)="delete(row.id)" ><mat-icon>delete</mat-icon></button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

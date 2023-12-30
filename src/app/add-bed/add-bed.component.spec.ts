@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConfSerialsComponent } from './conf-serials.component';
+import { AddBedComponent } from './add-bed.component';
 
-describe('ConfSerialsComponent', () => {
-  let component: ConfSerialsComponent;
-  let fixture: ComponentFixture<ConfSerialsComponent>;
+describe('AddBedComponent', () => {
+  let component: AddBedComponent;
+  let fixture: ComponentFixture<AddBedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ConfSerialsComponent]
+      declarations: [AddBedComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ConfSerialsComponent);
+    fixture = TestBed.createComponent(AddBedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

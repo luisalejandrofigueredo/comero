@@ -11,7 +11,10 @@ import { LoginComponent } from "./login/login.component";
 import { HomepageComponent } from './homepage/homepage.component';
 import { AuthFirebaseGuard } from "./auth-firebase.guard";
 import { DoctorDashboardComponent } from "./doctor-dashboard/doctor-dashboard.component";
-import { ChatComponent  } from "./chat/chat.component";
+import { ChatComponent } from "./chat/chat.component";
+import { ConfSerialCrudComponent } from "./conf-serial-crud/conf-serial-crud.component";
+import { AddBedComponent } from "./add-bed/add-bed.component";
+import { EditBedComponent } from "./edit-bed/edit-bed.component";
 const routes: Routes = [
   { component: CrudPacienteComponent, path: 'crudPaciente', canActivate: [AuthFirebaseGuard] },
   { component: EditPacienteComponent, path: 'editPaciente/:id/:tabIndex', canActivate: [AuthFirebaseGuard] },
@@ -22,9 +25,11 @@ const routes: Routes = [
   { component: ComPythonComponent, path: 'comPython', canActivate: [AuthFirebaseGuard] },
   { component: LoginComponent, path: 'login' },
   { component: HomepageComponent, path: '' },
-  { component:DoctorDashboardComponent,path:'doctorDashboard',canActivate: [AuthFirebaseGuard]},
-  { component:ChatComponent,path:'chat',canActivate: [AuthFirebaseGuard]},
-
+  { component: DoctorDashboardComponent, path: 'doctorDashboard', canActivate: [AuthFirebaseGuard] },
+  { component: ChatComponent, path: 'chat', canActivate: [AuthFirebaseGuard] },
+  { component: ConfSerialCrudComponent, path: 'confSerial', canActivate: [AuthFirebaseGuard] },
+  { component: AddBedComponent, path: 'addBed', canActivate: [AuthFirebaseGuard] },
+  { component: EditBedComponent, path: 'editBed/:id', canActivate: [AuthFirebaseGuard] }
 ];
 
 @NgModule({
