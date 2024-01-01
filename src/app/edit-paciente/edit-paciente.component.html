@@ -57,7 +57,11 @@
                 </ng-template>
                 <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento"
                     type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon> </button>
+                @defer  {
                 <app-medicamentos [uuid]="this.uuid"></app-medicamentos>
+                }@placeholder {
+                    <p>Cargando medicamentos ...</p>
+                }
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
@@ -68,7 +72,11 @@
                 </ng-template>
                 <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia"
                     type="button" (click)="agregarHistoria()"><mat-icon>add</mat-icon></button>
-                <app-table-history [uuid]="this.uuid"></app-table-history>
+                    @defer  {
+                        <app-table-history [uuid]="this.uuid"></app-table-history>
+                    } @placeholder {
+                        <p>Cargando historias...</p>
+                    }
             </mat-tab>
         </mat-tab-group>
     </mat-dialog-content>

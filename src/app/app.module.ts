@@ -47,6 +47,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { TableHistoryComponent } from './table-history/table-history.component';
 import localeEs from '@angular/common/locales/es';
+//import localeEN from "@angular/common/locales/en";
+
 import { registerLocaleData } from '@angular/common';
 import { EditHistoryComponent } from './edit-history/edit-history.component';
 import { ComPythonComponent } from './com-python/com-python.component';
@@ -67,7 +69,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ConfSerialCrudComponent } from './conf-serial-crud/conf-serial-crud.component';
 import { AddBedComponent } from './add-bed/add-bed.component';
 import { EditBedComponent } from './edit-bed/edit-bed.component';
-registerLocaleData(localeEs, 'es');
+
+
+registerLocaleData(localeEs, 'es-UY');
+//registerLocaleData(localeEN, 'en-US');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
 @NgModule({
@@ -138,7 +143,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
   providers: [provideHttpClient(),
   { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },
   { provide: MAT_DATE_LOCALE, useValue: 'sp-ES' },
-  { provide: LOCALE_ID, useValue: 'es' },
+  { provide: LOCALE_ID, useValue: 'en-US' },
   { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, {
     provide: MatPaginatorIntl,
     useClass: CustomMatPaginatorIntl
