@@ -36,10 +36,9 @@ export class AddTextHistoryComponent implements OnInit {
       if (this.profileForm.get(`seleccionado${index}`)?.value===true){
         if (this.profileForm.get(`hora${index}`)?.value!==null){}
         const hora=new Date(this.profileForm.get(`hora${index}`)?.value)  
-        this.retText+=this.profileForm.get(`medicamento${index}`)?.value+' suministrado a las '+hora.getHours()+':'+hora.getMinutes()+' del '+hora.toLocaleDateString()+'\n'
+        this.retText+=this.profileForm.get(`medicamento${index}`)?.value+$localize`:@@suministrado: suministrado a las `+hora.getHours()+':'+hora.getMinutes()+$localize `:@@del: del `+hora.toLocaleDateString()+'\n'
       }
     }
     this.dialogRef.close(this.retText)
   }
-
 }

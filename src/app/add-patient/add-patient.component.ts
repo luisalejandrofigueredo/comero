@@ -34,8 +34,8 @@ export class AddPatientComponent {
       bloodPressureMin: this.profileForm.controls.bloodPressureMin.value,
       pulse: this.profileForm.controls.pulse.value,
       oxygen: this.profileForm.controls.oxygen.value
-    }).subscribe({next: _result => {this.snackBar.open('Paciente agregado', '', { duration: 500 })
-    this.router.navigate(['crudPaciente'])},error: error=>{this.snackBar.open('Error al agregar paciente', '', { duration: 500 }),this.router.navigate(['crudPaciente'])}})
+    }).subscribe({next: _result => {this.snackBar.open($localize `:@@paciente_agregado:Paciente agregado`, '', { duration: 500 })
+    this.router.navigate(['crudPaciente'])},error: error=>{this.snackBar.open($localize `:@@error_al_agregar_paciente:Error al agregar paciente`, '', { duration: 500 }),this.router.navigate(['crudPaciente'])}})
   }
 
   closeDialog(){

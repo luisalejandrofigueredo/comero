@@ -1,18 +1,18 @@
-<h2 mat-dialog-title>Agregar paciente</h2>
+<h2 mat-dialog-title i18n="@@agregar_paciente" >Agregar paciente</h2>
 <form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
     <mat-dialog-content>
         <mat-form-field>
-            <mat-label>Nombre</mat-label>
+            <mat-label i18n="@@nombre">Nombre</mat-label>
             <input matInput formControlName="firstName">
             @if (profileForm.controls.firstName.hasError('required')) {
-            <mat-error>Nombre requerido</mat-error>
+            <mat-error i18n="@@nombre_requerido">Nombre requerido</mat-error>
             }
         </mat-form-field>
         <mat-form-field style="padding-left: 10px;">
-            <mat-label>Apellido</mat-label>
+            <mat-label i18n="@@apellido" >Apellido</mat-label>
             <input matInput formControlName="lastName">
             @if (profileForm.controls.firstName.hasError('required')) {
-            <mat-error>Apellido requerido</mat-error>
+            <mat-error i18n="@@apellido_requerido" >Apellido requerido</mat-error>
             }
         </mat-form-field>
         <div class="row">
@@ -38,7 +38,7 @@
         </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close (click)="closeDialog()" i18n>Cancelar</button>
-        <button mat-button type="submit" [disabled]="!profileForm.valid" i18n>Agregar</button>
+        <button mat-button mat-dialog-close (click)="closeDialog()" i18n="@@cancelar">Cancelar</button>
+        <button mat-button type="submit" [disabled]="!profileForm.valid" i18n="@@agregar">Agregar</button>
     </mat-dialog-actions>
 </form>

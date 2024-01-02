@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
             next: (sub: ChatDocument) => {
               if (sub !== null) {
                 this.chatService.chat_uuid = sub.uid;
-                this.matSnackBar.open('Login', 'Acceso concedido y agregado al chat', { duration: 10000 });
+                this.matSnackBar.open($localize `:@@ingreso:Ingreso`,$localize `:@@acceso_concedido:Acceso concedido y agregado al chat`, { duration: 10000 });
               }
             }
           })

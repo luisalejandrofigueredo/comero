@@ -1,18 +1,18 @@
-<h2 mat-dialog-title>Paciente</h2>
+<h2 mat-dialog-title i18n="@@paciente">Paciente</h2>
 <mat-dialog-content>
     <form [formGroup]="profileForm" (ngSubmit)="close()">
         <mat-form-field>
-            <mat-label>Nombre</mat-label>
+            <mat-label i18n="@@nombre">Nombre</mat-label>
             <input matInput formControlName="firstName">
             @if (profileForm.controls.firstName.hasError('required')) {
             <mat-error>Nombre requerido</mat-error>
             }
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Apellido</mat-label>
+            <mat-label i18n="@@apellido">Apellido</mat-label>
             <input matInput formControlName="lastName">
             @if (profileForm.controls.firstName.hasError('required')) {
-            <mat-error>Apellido requerido</mat-error>
+            <mat-error i18n="@@apellido_requerido">Apellido requerido</mat-error>
             }
         </mat-form-field>
         <div class="row">
@@ -22,13 +22,13 @@
             </mat-slider>
             <span class="material-symbols-outlined">blood_pressure</span>
             <mat-form-field>
-                <mat-label>Pulso</mat-label>
+                <mat-label i18n="@@pulso">Pulso</mat-label>
                 <input matInput type="number" formControlName="pulse">
                 <mat-icon matSuffix>favorite</mat-icon>
             </mat-form-field>
             <span class="material-symbols-outlined">monitor_heart</span>
             <mat-form-field>
-                <mat-label>Oxígeno</mat-label>
+                <mat-label i18n="@@oxigeno">Oxígeno</mat-label>
                 <input matInput type="number" formControlName="oxygen">
             </mat-form-field>
             <span class="material-symbols-outlined">
@@ -39,5 +39,5 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button (click)="close()" mat-button>Cerrar</button>
+    <button (click)="close()" mat-button i18n="@@cerrar">Cerrar</button>
 </mat-dialog-actions>

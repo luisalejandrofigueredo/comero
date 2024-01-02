@@ -14,6 +14,8 @@ export class YesNOComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public action: {action:string,description:string},private dialogRef:MatDialogRef<YesNOComponent>){}
   ngOnInit(): void {
     this.dialogRef.disableClose=false;
+    const message = $localize `:@@aceptar:Aceptar`;
+    console.log('aceptar',message);
   }
   aceptar(){
     this.dialogRef.close(true);

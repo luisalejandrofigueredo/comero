@@ -3,19 +3,19 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/login">Login</a>
-      <a mat-list-item routerLink="/crudPaciente"><span class="material-symbols-outlined">
+      <a mat-list-item routerLink="/login" i18n="@@ingresar">Ingresar</a>
+      <a mat-list-item routerLink="/crudPaciente" i18n="@@administracion"><span class="material-symbols-outlined">
           inpatient
         </span><span class="material-symbols-outlined">
           outpatient_med
         </span>Administración</a>
-      <a mat-list-item routerLink="doctorDashboard"><span class="material-symbols-outlined">
+      <a mat-list-item routerLink="doctorDashboard" i18n="@@monitor"><span class="material-symbols-outlined">
           monitor_heart
         </span>Monitor</a>
-        <a mat-list-item routerLink="chat"><span class="material-symbols-outlined">
+        <a mat-list-item routerLink="chat" i18n="@@chat"><span class="material-symbols-outlined">
           chat
         </span>Chat</a>
-      <a mat-list-item routerLink="confSerial"><span class="material-symbols-outlined">
+      <a mat-list-item routerLink="confSerial" i18n="@@configurar"><span class="material-symbols-outlined">
           settings
         </span>Configurar</a>
     </mat-nav-list>

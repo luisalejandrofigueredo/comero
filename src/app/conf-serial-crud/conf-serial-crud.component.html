@@ -1,35 +1,36 @@
+
 <button mat-fab (click)="addBed($event)" ><mat-icon>add</mat-icon></button>
 <div class="mat-elevation-z8">
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <th class="subrayado" mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@id">Id</th>
       <td mat-cell *matCellDef="let row">{{row.id}}</td>
     </ng-container>
 
 
     <ng-container matColumnDef="serial">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Serial Port</th>
+      <th class="subrayado" mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@puerta_serial">Puerta serial</th>
       <td mat-cell *matCellDef="let row">{{row.serial}}</td>
     </ng-container>
 
     <ng-container matColumnDef="sign">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Signo Vital</th>
+      <th class="subrayado" mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@signo_vital">Signo Vital</th>
       <td mat-cell *matCellDef="let row">{{row.sign}}</td>
     </ng-container>
 
     <ng-container matColumnDef="bed">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cama</th>
+      <th class="subrayado" mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@cama">Cama</th>
       <td mat-cell *matCellDef="let row">{{row.bed}}</td>
     </ng-container>
 
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Editar</th>
+      <th class="subrayado" mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@editar">Editar</th>
       <td mat-cell *matCellDef="let row"><button mat-icon-button (click)="edit(row.id)"><mat-icon>edit</mat-icon></button></td>
     </ng-container>
 
     <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrar</th>
+      <th class="subrayado" mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@borrar">Borrar</th>
       <td mat-cell *matCellDef="let row"><button mat-icon-button (click)="delete(row.id)" ><mat-icon>delete</mat-icon></button></td>
     </ng-container>
 

@@ -1,8 +1,8 @@
 <mat-card class="card">
-    <mat-card-title>
+    <mat-card-title i18n="@@agregar_medicamentos">
         <span style="width: 40px;" class="material-symbols-outlined">
             prescriptions
-        </span> Agregar medicamentos
+        </span>Agregar medicamentos
     </mat-card-title>
     <form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
         <mat-card-content>
@@ -10,23 +10,24 @@
                 medication
             </span>
             <mat-form-field>
-                <mat-label>Medicamento</mat-label>
+                <mat-label i18n="@@medicamento">Medicamento</mat-label>
                 <input matInput formControlName="drug">
                 @if (profileForm.controls.drug.hasError('required')) {
-                <mat-error>Medicamento requerido</mat-error>
+                <mat-error i18n="@@medicamento_requerido">Medicamento requerido</mat-error>
                 }
             </mat-form-field>
             <mat-form-field style="padding-left: 10px;">
                 <mat-label>Via</mat-label>
                 <mat-select formControlName="type" required>
-                    <mat-option value="1">Oral Píldoras</mat-option>
-                    <mat-option value="2" select>Suero</mat-option>
-                    <mat-option value="3">Suero con medicamento</mat-option>
-                    <mat-option value="4">Inyectable</mat-option>
-                    <mat-option value="5">Oral líquido</mat-option>
+                    <mat-option value="1" i18n="@@oral_pildoras">Oral Píldoras</mat-option>
+                    <mat-option value="2" select i18n="@@suero">Suero</mat-option>
+                    <mat-option value="3" i18n="@@suero_con_medicamentos">Suero con medicamento</mat-option>
+                    <mat-option value="4" i18n="@@inyectable" >Inyectable</mat-option>
+                    <mat-option value="5" i18n="@@oral_liquido">Oral líquido</mat-option>
+                    <mat-option value="6" i18n="@@supositorios">Supositorio</mat-option>
                 </mat-select>
                 @if (profileForm.controls.type.hasError('required')) {
-                <mat-error>Vía requerida</mat-error>
+                <mat-error i18n="@@via_requerida">Vía requerida</mat-error>
                 }
             </mat-form-field>
             @switch (profileForm.controls.type.value) {
@@ -54,6 +55,11 @@
                 medication_liquid
             </span>
             }
+            @case ("6") {
+                <span style="padding-top: 20px;">
+                    <img src="assets/supositorio.png" height="32px" alt="">
+                </span>
+                }
             @default(){
             <span style="padding-top: 20px;" class="material-symbols-outlined">
                 error_med
@@ -61,27 +67,27 @@
             }
             }
             <mat-form-field style="padding-left: 10px;">
-                <mat-label>Cantidad</mat-label>
+                <mat-label i18n="@@cantidad">Cantidad</mat-label>
                 <input matInput type="number" formControlName="canty">
                 @if (profileForm.controls.canty.hasError('required')) {
-                <mat-error>Cantidad requerida</mat-error>
+                <mat-error i18n="@@cantidad_requerida">Cantidad requerida</mat-error>
                 }
             </mat-form-field>
             <mat-form-field style="padding-left: 10px;">
-                <mat-label>Unidades</mat-label>
+                <mat-label i18n="@@unidades">Unidades</mat-label>
                 <mat-select formControlName="units" required>
-                    <mat-option value="Mg">Mg</mat-option>
-                    <mat-option value="Ml" select>Ml</mat-option>
-                    <mat-option value="Ui">Ui</mat-option>
+                    <mat-option value="Mg" i18n="@@mg">Mg</mat-option>
+                    <mat-option value="Ml" select i18n="@@ml">Ml</mat-option>
+                    <mat-option value="Ui" i18n="@@ui">UI</mat-option>
                 </mat-select>
                 @if (profileForm.controls.type.hasError('required')) {
-                <mat-error>Vía requerida</mat-error>
+                <mat-error i18n="@@via_requerida">Vía requerida</mat-error>
                 }
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-button (click)="closeDialog()">Cancelar</button>
-            <button mat-button type="submit" [disabled]="!profileForm.valid">Agregar</button>
+            <button mat-button (click)="closeDialog()" i18n="@@cancelar" >Cancelar</button>
+            <button mat-button type="submit" [disabled]="!profileForm.valid" i18n="@@agregar" >Agregar</button>
         </mat-card-actions>
     </form>
 </mat-card>

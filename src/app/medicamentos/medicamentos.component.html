@@ -26,14 +26,19 @@
             medication_liquid
         </span>
         }
+        @case ("6") {
+            <span style="padding-top: 20px;">
+                <img src="assets/supositorio.png" height="20px" alt="">
+            </span>
+            }
         }
-        {{item.name}} {{item.canty}} {{item.units}} {{item.hora | date:'d,MMM y, h:mm a'}}
+        {{item.name}} {{item.canty}} {{item.units}} {{item.hora | date}} {{item.hora | date:'h:mm a'}}
         @if( item.hora > currentTime-10*60*1000){ <button matChipRemove [attr.aria-label]='"delete"'>
             <mat-icon>cancel</mat-icon>
             </button>
             }
     </mat-chip>
     } @empty {
-    <p style="padding-left: 20px;text-align: center;">Sin medicación</p>
+    <p style="padding-left: 20px;text-align: center;" i18n="@@sin_medicacion">Sin medicación</p>
     }
 </mat-chip-listbox>

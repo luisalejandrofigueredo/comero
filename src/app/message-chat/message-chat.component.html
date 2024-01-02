@@ -2,11 +2,11 @@
 <form [formGroup]="profileForm" (ngSubmit)="sendMessage()">
     <mat-dialog-content>
         <mat-form-field>
-            <input matInput placeholder="Mensaje" formControlName="message">
+            <input matInput i18n-placeholder="@@mensaje" placeholder="Mensaje" formControlName="message">
         </mat-form-field>
     </mat-dialog-content>
     <mat-dialog-actions>
-        <button mat-button type="button" [mat-dialog-close]="false">Cancelar</button>
-        <button mat-button type="submit">Enviar</button>
+        <button mat-button type="button" [mat-dialog-close]="false" i18n="@@cancelar">Cancelar</button>
+        <button mat-button type="submit" i18n="@@enviar" >Enviar</button>
     </mat-dialog-actions>
 </form>

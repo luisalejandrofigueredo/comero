@@ -5,7 +5,7 @@
             @for (item of documents; track $index) {
             @if (item.uid !==this.authService.getUserData().uid) {
             <div class="row">
-                <button mat-mini-fab matTooltip="Ver mensajes" type="button" (click)="verMensajes(item.uid)">
+                <button mat-mini-fab i18n-matTooltip="@@ver_mensajes" matTooltip="Ver mensajes" type="button" (click)="verMensajes(item.uid)">
                     <div class="imagen-redondeada">
                         <img [src]="item.avatar" alt="">
                     </div>
@@ -35,9 +35,9 @@
         <form [formGroup]="profileForm" (ngSubmit)="enviar()">
             <div class="row">
             <mat-form-field class="full-width" >
-                <input matInput placeholder="mensaje" formControlName="message" >
+                <input matInput i18n-placeholder="@@mensaje" placeholder="Mensaje" formControlName="message" >
             </mat-form-field>
-            <button mat-raised-button type="submit">Enviar</button>
+            <span style="padding-top: 10px;padding-left: 20px;"><button mat-raised-button type="submit" i18n="@@enviar">Enviar</button></span>
         </div>
         </form>
     </mat-card-content>

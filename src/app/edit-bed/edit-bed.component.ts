@@ -9,40 +9,44 @@ import { ConfSerialService } from '../services/conf-serial.service';
   styleUrl: './edit-bed.component.css'
 })
 export class EditBedComponent implements OnInit {
-  public signosVitales:string[]=["Pulso","Presión","Oxigeno"];
+  public signosVitales: string[] = [$localize`:@@pulso:Pulso`, $localize`:@@presion:Presión`, $localize`:@@oxigeno:Oxígeno`];
   private confSerialService = inject(ConfSerialService);
-  private router =inject(Router);
+  private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
-  nBed:number=0;
+  nBed: number = 0;
   profileForm = new FormGroup({
-    serial: new FormControl<string>('', { nonNullable: true,validators: Validators.required }),
+    serial: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     sign: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     bed: new FormControl<string>('', { nonNullable: true })
   });
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((value:Params)=>{
-      this.confSerialService.getOne(parseInt(value['id'])).subscribe({next:value=>{
-        this.nBed=value.id!;
-        this.profileForm.controls.bed.setValue(value.bed);
-        this.profileForm.controls.serial.setValue(value.serial);
-        this.profileForm.controls.sign.setValue(value.sign);
-      }})
+    this.activatedRoute.params.subscribe((value: Params) => {
+      this.confSerialService.getOne(parseInt(value['id'])).subscribe({
+        next: value => {
+          this.nBed = value.id!;
+          this.profileForm.controls.bed.setValue(value.bed);
+          this.profileForm.controls.serial.setValue(value.serial);
+          this.profileForm.controls.sign.setValue(value.sign);
+        }
+      })
     })
   }
 
   saveDialog() {
     this.confSerialService.editBed({
-      id:this.nBed,
+      id: this.nBed,
       bed: this.profileForm.controls.bed.value,
       sign: this.profileForm.controls.sign.value,
       serial: this.profileForm.controls.serial.value
-    }).subscribe({next:(_editedBed)=>{
-      this.router.navigate(['confSerial']);
-    }})
+    }).subscribe({
+      next: (_editedBed) => {
+        this.router.navigate(['confSerial']);
+      }
+    })
   }
 
-  closeDialog() { 
+  closeDialog() {
     this.router.navigate(['confSerial']);
   }
 

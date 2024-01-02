@@ -38,7 +38,7 @@ export class MedicamentosComponent implements OnInit,OnChanges{
         this.medicamentosService.deleteMedicamento(id).subscribe({next: document=>{
           this.medicamentosService.getMedicamentos(this.uuid).subscribe((medicamentos: MedicamentosDocument[]) => {
             this.medicamentos = medicamentos;
-            this.matSnackBar.open(`Medicamento borrado ${document.name}`,'',{duration:500});
+            this.matSnackBar.open($localize`:@@medicamento_borrado:Medicamento borrado ${document.name}`,'',{duration:500});
           });
         }});
       }

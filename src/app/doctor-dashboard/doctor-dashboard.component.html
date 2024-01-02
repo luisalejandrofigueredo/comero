@@ -1,34 +1,34 @@
-<h2 matCardTitle>Monitor médico</h2>
+<h2 matCardTitle i18n="@@monitor_medico">Monitor médico</h2>
 <mat-card>
   <mat-card-content>
     <div class="mat-elevation-z8">
       <table mat-table class="full-width-table" matSort aria-label="Elements">
 
         <ng-container matColumnDef="firstName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@nombre">Nombre</th>
           <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
         </ng-container>
 
         <ng-container matColumnDef="lastName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@apellido">Apellido</th>
           <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
         </ng-container>
 
         <ng-container matColumnDef="bloodPressureMin">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Minima<span style="padding-left: 10px;"><span
+          <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@minima">Mínima<span style="padding-left: 10px;"><span
                 class="material-symbols-outlined" style="color: red;">blood_pressure</span></span></th>
           <td mat-cell *matCellDef="let row">{{row.bloodPressureMin}}</td>
         </ng-container>
 
 
         <ng-container matColumnDef="bloodPressureMax">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Maxima<span style="padding-left: 10px;"><span
+          <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@maxima">Máxima<span style="padding-left: 10px;"><span
                 class="material-symbols-outlined" style="color: red;">blood_pressure</span></span></th>
           <td mat-cell *matCellDef="let row">{{row.bloodPressureMax}}</td>
         </ng-container>
 
         <ng-container matColumnDef="pulse">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pulso <span style="color:red;padding-left: 10px;"
+          <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@pulso_col">Pulso<span style="color:red;padding-left: 10px;"
               class="material-symbols-outlined">
               monitor_heart
             </span> </th>
@@ -56,7 +56,7 @@
           </td>
         </ng-container>
         <ng-container matColumnDef="oxygen">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Saturación<span
+          <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@saturacion">Saturación<span
               style="color: red; padding-left: 10px;"><span class="material-symbols-outlined"><span
                   class="material-symbols-outlined">
                   oxygen_saturation
@@ -80,6 +80,6 @@
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="this.close()">Cerrar</button>
+    <button mat-button (click)="this.close()" i18n="@@cerrar">Cerrar</button>
   </mat-card-actions>
 </mat-card>

@@ -1,12 +1,12 @@
-<h2 mat-dialog-title>Editando paciente</h2>
+<h2 mat-dialog-title i18n="@@editando_paciente">Editando paciente</h2>
 <form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
     <mat-dialog-content>
         <mat-form-field>
-            <mat-label>Nombre</mat-label>
+            <mat-label i18n="@@nombre">Nombre</mat-label>
             <input matInput formControlName="firstName">
         </mat-form-field>
         <mat-form-field style="padding-left: 10px;">
-            <mat-label>Apellido</mat-label>
+            <mat-label i18n="@@apellido">Apellido</mat-label>
             <input matInput formControlName="lastName">
         </mat-form-field>
         <div class="row">
@@ -48,40 +48,40 @@
             }
         </div>
         <mat-tab-group [selectedIndex]="this.tabIndex" dynamicHeight>
-            <mat-tab label="Medicamentos">
-                <ng-template mat-tab-label>
+            <mat-tab>
+                <ng-template mat-tab-label i18n="@@medicamentos">
                     <span style="width: 40px;" class="material-symbols-outlined">
                         prescriptions
                     </span>
                     Medicamentos
                 </ng-template>
-                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar medicamento"
+                <button color="warn" mat-mini-fab matTooltipPosition="above" i18n-matTooltip="@@agregar_medicamento" matTooltip="Agregar medicamento"
                     type="button" (click)="agregarMedicamentos()"><mat-icon>add</mat-icon> </button>
                 @defer  {
                 <app-medicamentos [uuid]="this.uuid"></app-medicamentos>
                 }@placeholder {
-                    <p>Cargando medicamentos ...</p>
+                    <p i18n="@@cargando_medicamento">Cargando medicamentos ...</p>
                 }
             </mat-tab>
             <mat-tab>
-                <ng-template mat-tab-label>
+                <ng-template mat-tab-label i18n="@@historias">
                     <span style="width: 40px;" class="material-symbols-outlined">
                         medical_information
                     </span>
                     Historias
                 </ng-template>
-                <button color="warn" mat-mini-fab matTooltipPosition="above" matTooltip="Agregar elemento a la historia"
+                <button color="warn" mat-mini-fab matTooltipPosition="above" i18n-matTooltip="@@agregar_elemento" matTooltip="Agregar elemento a la historia"
                     type="button" (click)="agregarHistoria()"><mat-icon>add</mat-icon></button>
                     @defer  {
                         <app-table-history [uuid]="this.uuid"></app-table-history>
                     } @placeholder {
-                        <p>Cargando historias...</p>
+                        <p i18n="@@cargando_historias">Cargando historias...</p>
                     }
             </mat-tab>
         </mat-tab-group>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button type="button" (click)="closeDialog()">Cancelar</button>
-        <button mat-button type="submit" [disabled]="!profileForm.valid">Cambiar</button>
+        <button mat-button type="button" (click)="closeDialog()" i18n="@@cancelar">Cancelar</button>
+        <button mat-button type="submit" [disabled]="!profileForm.valid" i18n="@@cambiar">Cambiar</button>
     </mat-dialog-actions>
 </form>

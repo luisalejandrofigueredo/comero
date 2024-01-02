@@ -33,7 +33,7 @@ export class LoginComponent implements OnDestroy {
     await this.authService.SignOut()
     this.chatDelete$ = this.chatService.deleteChat(this.chatService.chat_uuid).subscribe((subscribe) => {
       this.chatService.logout();
-      this.matSnackBar.open('Logout', 'Acceso desactivado y borrado del chat', { duration: 10000 });
+      this.matSnackBar.open($localize`:@@salio:Salió`,$localize `:@@acceso_desactivado:Acceso desactivado y borrado del chat`, { duration: 10000 });
     })
   }
 

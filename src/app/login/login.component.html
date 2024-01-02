@@ -2,32 +2,32 @@
 <mat-card>
     <form [formGroup]="profileForm" (ngSubmit)="saveDialog()">
         <mat-form-field>
-            <mat-label>Login</mat-label>
+            <mat-label i18n="@@email">Email</mat-label>
             <input matInput type="text" name="login" formControlName="login">
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
+            <mat-label i18n="@@clave">Clave</mat-label>
             <input matInput name="password" formControlName="password" [type]="passwordVisible ? 'text' : 'password'">
             <button type="button" mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible"
                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="!passwordVisible">
                 <mat-icon>{{passwordVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
             </button>
         </mat-form-field>
-        <button mat-button (click)="cancel()">Cancel</button>
-        <button mat-button type="submit">Login</button>
+        <button mat-button (click)="cancel()" i18n="@@cancelar">Cancelar</button>
+        <button mat-button type="submit" i18n="@@ingresar">Ingresar</button>
     </form>
 </mat-card>
 <mat-card>
-    <button mat-button (click)="loginGoogle()" ><span class="material-symbols-outlined">
+    <button mat-button (click)="loginGoogle()" i18n="@@ingresar_con_google"><span class="material-symbols-outlined">
         login
-        </span>Login with google</button>
+        </span>Ingresar con Google</button>
 </mat-card>
 } @else {
     <mat-card>
         <p>{{this.authService.getUserData()?.displayName}}</p>
         <img width="50px" [src]="this.authService.getUserData()?.photoURL" alt="">
-        <button mat-raised-button (click)="logout()" ><span class="material-symbols-outlined">
+        <button mat-raised-button (click)="logout()" i18n="@@salir"><span class="material-symbols-outlined">
             login
-            </span>Logout</button>
+            </span>Salir</button>
     </mat-card>
 }

@@ -2,17 +2,293 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="es-UY" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="6402951927316857780" datatype="html">
-        <source>Cancelar</source>
-      </trans-unit>
-      <trans-unit id="8524201838416230611" datatype="html">
-        <source>Agregar</source>
-      </trans-unit>
       <trans-unit id="cancelar" datatype="html">
         <source>Cancelar</source>
       </trans-unit>
       <trans-unit id="aceptar" datatype="html">
         <source>Aceptar</source>
+      </trans-unit>
+      <trans-unit id="Ingresar" datatype="html">
+        <source>Ingresar paciente</source>
+      </trans-unit>
+      <trans-unit id="agregar" datatype="html">
+        <source>Agregar</source>
+      </trans-unit>
+      <trans-unit id="apellido" datatype="html">
+        <source>Apellido</source>
+      </trans-unit>
+      <trans-unit id="cama" datatype="html">
+        <source>Cama</source>
+      </trans-unit>
+      <trans-unit id="editar" datatype="html">
+        <source>Editar</source>
+      </trans-unit>
+      <trans-unit id="egresar" datatype="html">
+        <source>Egresar</source>
+      </trans-unit>
+      <trans-unit id="maxima" datatype="html">
+        <source>Máxima<x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span style=&quot;color: red; padding-left: 10px;&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/>blood_pressure<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="minima" datatype="html">
+        <source>Mínima<x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span style=&quot;color: red;padding-left: 10px;&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/>blood_pressure<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="modificar" datatype="html">
+        <source>Modificar</source>
+      </trans-unit>
+      <trans-unit id="nombre" datatype="html">
+        <source>Nombre</source>
+      </trans-unit>
+      <trans-unit id="numero_de_cama" datatype="html">
+        <source>Número de cama:<x id="INTERPOLATION" equiv-text="{{nBed}}"/></source>
+      </trans-unit>
+      <trans-unit id="oxigeno" datatype="html">
+        <source>Oxígeno</source>
+      </trans-unit>
+      <trans-unit id="presion" datatype="html">
+        <source>Presión</source>
+      </trans-unit>
+      <trans-unit id="puerta_serial" datatype="html">
+        <source>Puerta serial</source>
+      </trans-unit>
+      <trans-unit id="pulso" datatype="html">
+        <source>Pulso</source>
+      </trans-unit>
+      <trans-unit id="saturacion" datatype="html">
+        <source>Saturación<x id="START_TAG_SPAN_1" ctype="x-span_1" equiv-text="&lt;span style=&quot;color: red; padding-left: 10px;&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> oxygen_saturation <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="seleccione_pagina" datatype="html">
+        <source>Seleccione página</source>
+      </trans-unit>
+      <trans-unit id="signo_vital" datatype="html">
+        <source>Signo Vital</source>
+      </trans-unit>
+      <trans-unit id="pulso_col" datatype="html">
+        <source>Pulso<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span style=&quot;color:red;padding-left: 10px;&quot; class=&quot;material-symbols-outlined&quot;&gt;"/> monitor_heart <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="acceso_concedido" datatype="html">
+        <source>Acceso concedido y agregado al chat</source>
+      </trans-unit>
+      <trans-unit id="acceso_desactivado" datatype="html">
+        <source>Acceso desactivado y borrado del chat</source>
+      </trans-unit>
+      <trans-unit id="administracion" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> inpatient <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> outpatient_med <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Administración</source>
+      </trans-unit>
+      <trans-unit id="agrega_medicamentos_pre" datatype="html">
+        <source>agrega medicamentos prescritos</source>
+      </trans-unit>
+      <trans-unit id="agregar_elemento" datatype="html">
+        <source>Agregar elemento a la historia</source>
+      </trans-unit>
+      <trans-unit id="agregar_medicamento" datatype="html">
+        <source>Agregar medicamento</source>
+      </trans-unit>
+      <trans-unit id="agregar_medicamentos" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span style=&quot;width: 40px;&quot; class=&quot;material-symbols-outlined&quot;&gt;"/> prescriptions <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Agregar medicamentos </source>
+      </trans-unit>
+      <trans-unit id="agregar_paciente" datatype="html">
+        <source>Agregar paciente</source>
+      </trans-unit>
+      <trans-unit id="apellido_requerido" datatype="html">
+        <source>Apellido requerido</source>
+      </trans-unit>
+      <trans-unit id="borrar" datatype="html">
+        <source>Borrar</source>
+      </trans-unit>
+      <trans-unit id="borrar_cama" datatype="html">
+        <source>¿Desea borrar la cama <x id="PH" equiv-text="id"/>?</source>
+      </trans-unit>
+      <trans-unit id="cambiar" datatype="html">
+        <source>Cambiar</source>
+      </trans-unit>
+      <trans-unit id="cantidad" datatype="html">
+        <source>Cantidad</source>
+      </trans-unit>
+      <trans-unit id="cantidad_requerida" datatype="html">
+        <source>Cantidad requerida</source>
+      </trans-unit>
+      <trans-unit id="cerrar" datatype="html">
+        <source>Cerrar</source>
+      </trans-unit>
+      <trans-unit id="chat" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> chat <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Chat</source>
+      </trans-unit>
+      <trans-unit id="clave" datatype="html">
+        <source>Clave</source>
+      </trans-unit>
+      <trans-unit id="configurar" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> settings <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Configurar</source>
+      </trans-unit>
+      <trans-unit id="copiar_a_la_historia" datatype="html">
+        <source>Copiar a la historia</source>
+      </trans-unit>
+      <trans-unit id="de" datatype="html">
+        <source><x id="PH" equiv-text="startIndex + 1"/> - <x id="PH_1" equiv-text="endIndex"/> de <x id="PH_2" equiv-text="length"/></source>
+      </trans-unit>
+      <trans-unit id="de_largo" datatype="html">
+        <source>0 de <x id="PH" equiv-text="length"/></source>
+      </trans-unit>
+      <trans-unit id="del" datatype="html">
+        <source> del </source>
+      </trans-unit>
+      <trans-unit id="editando_paciente" datatype="html">
+        <source>Editando paciente</source>
+      </trans-unit>
+      <trans-unit id="email" datatype="html">
+        <source>Email</source>
+      </trans-unit>
+      <trans-unit id="enviar" datatype="html">
+        <source>Enviar</source>
+      </trans-unit>
+      <trans-unit id="error_agregar_medicamento" datatype="html">
+        <source>Error al agregar medicamento</source>
+      </trans-unit>
+      <trans-unit id="error_al_agregar_paciente" datatype="html">
+        <source>Error al agregar paciente</source>
+      </trans-unit>
+      <trans-unit id="fecha" datatype="html">
+        <source>Fecha</source>
+      </trans-unit>
+      <trans-unit id="generado_por_la_ia" datatype="html">
+        <source>Generado por la IA</source>
+      </trans-unit>
+      <trans-unit id="historia" datatype="html">
+        <source>Historia</source>
+      </trans-unit>
+      <trans-unit id="historias" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span style=&quot;width: 40px;&quot; class=&quot;material-symbols-outlined&quot;&gt;"/> medical_information <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Historias </source>
+      </trans-unit>
+      <trans-unit id="id" datatype="html">
+        <source>Id</source>
+      </trans-unit>
+      <trans-unit id="ingresar" datatype="html">
+        <source>Ingresar</source>
+      </trans-unit>
+      <trans-unit id="ingresar_con_google" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> login <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Ingresar con Google</source>
+      </trans-unit>
+      <trans-unit id="inyectable" datatype="html">
+        <source>Inyectable</source>
+      </trans-unit>
+      <trans-unit id="items_por_pagina" datatype="html">
+        <source>Items por página</source>
+      </trans-unit>
+      <trans-unit id="lista_de_medicamentos" datatype="html">
+        <source>Lista de Medicamentos</source>
+      </trans-unit>
+      <trans-unit id="medicamento" datatype="html">
+        <source>Medicamento</source>
+      </trans-unit>
+      <trans-unit id="medicamento_agregado" datatype="html">
+        <source>Medicamento agregado <x id="PH" equiv-text="medicamento.name"/></source>
+      </trans-unit>
+      <trans-unit id="medicamento_requerido" datatype="html">
+        <source>Medicamento requerido</source>
+      </trans-unit>
+      <trans-unit id="medicamentos" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span style=&quot;width: 40px;&quot; class=&quot;material-symbols-outlined&quot;&gt;"/> prescriptions <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Medicamentos </source>
+      </trans-unit>
+      <trans-unit id="mensaje" datatype="html">
+        <source>Mensaje</source>
+      </trans-unit>
+      <trans-unit id="mg" datatype="html">
+        <source>Mg</source>
+      </trans-unit>
+      <trans-unit id="ml" datatype="html">
+        <source>Ml</source>
+      </trans-unit>
+      <trans-unit id="monitor" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> monitor_heart <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Monitor</source>
+      </trans-unit>
+      <trans-unit id="nombre_requerido" datatype="html">
+        <source>Nombre requerido</source>
+      </trans-unit>
+      <trans-unit id="oral_liquido" datatype="html">
+        <source>Oral líquido</source>
+      </trans-unit>
+      <trans-unit id="oral_pildoras" datatype="html">
+        <source>Oral Píldoras</source>
+      </trans-unit>
+      <trans-unit id="paciente" datatype="html">
+        <source>Paciente</source>
+      </trans-unit>
+      <trans-unit id="paciente_agregado" datatype="html">
+        <source>Paciente agregado</source>
+      </trans-unit>
+      <trans-unit id="paciente_egresado" datatype="html">
+        <source>Paciente egresado</source>
+      </trans-unit>
+      <trans-unit id="pagina_anterior" datatype="html">
+        <source>Página anterior</source>
+      </trans-unit>
+      <trans-unit id="pasar_a_la_historia" datatype="html">
+        <source>Pasar a la historia</source>
+      </trans-unit>
+      <trans-unit id="proxima_pagina" datatype="html">
+        <source>Proxima página</source>
+      </trans-unit>
+      <trans-unit id="salio" datatype="html">
+        <source>Salió</source>
+      </trans-unit>
+      <trans-unit id="salir" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;material-symbols-outlined&quot;&gt;"/> login <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>Salir</source>
+      </trans-unit>
+      <trans-unit id="seleccione_fecha" datatype="html">
+        <source>Seleccione fecha</source>
+      </trans-unit>
+      <trans-unit id="signos_vitales_act" datatype="html">
+        <source>Signos vitales actualizados</source>
+      </trans-unit>
+      <trans-unit id="suero" datatype="html">
+        <source>Suero</source>
+      </trans-unit>
+      <trans-unit id="suero_con_medicamentos" datatype="html">
+        <source>Suero con medicamento</source>
+      </trans-unit>
+      <trans-unit id="suministrado" datatype="html">
+        <source> suministrado a las </source>
+      </trans-unit>
+      <trans-unit id="ui" datatype="html">
+        <source>UI</source>
+      </trans-unit>
+      <trans-unit id="unidades" datatype="html">
+        <source>Unidades</source>
+      </trans-unit>
+      <trans-unit id="usa_la_ia" datatype="html">
+        <source>Usa la IA para mejorar tu historia</source>
+      </trans-unit>
+      <trans-unit id="ver_mensajes" datatype="html">
+        <source>Ver mensajes</source>
+      </trans-unit>
+      <trans-unit id="via_requerida" datatype="html">
+        <source>Vía requerida</source>
+      </trans-unit>
+      <trans-unit id="cargando_historias" datatype="html">
+        <source>Cargando historias...</source>
+      </trans-unit>
+      <trans-unit id="cargando_medicamento" datatype="html">
+        <source>Cargando medicamentos ...</source>
+      </trans-unit>
+      <trans-unit id="DD_MM_AAAA" datatype="html">
+        <source>DD/MM/AAAA</source>
+      </trans-unit>
+      <trans-unit id="ingreso" datatype="html">
+        <source>Ingreso</source>
+      </trans-unit>
+      <trans-unit id="medicamento_borrado" datatype="html">
+        <source>Medicamento borrado <x id="PH" equiv-text="document.name"/></source>
+      </trans-unit>
+      <trans-unit id="sin_medicacion" datatype="html">
+        <source>Sin medicación</source>
+      </trans-unit>
+      <trans-unit id="pregunta_egresar" datatype="html">
+        <source>Desea egresar a <x id="PH" equiv-text="paciente.firstName"/> <x id="PH_1" equiv-text="paciente.lastName"/></source>
+      </trans-unit>
+      <trans-unit id="monitor_medico" datatype="html">
+        <source>Monitor médico</source>
+      </trans-unit>
+      <trans-unit id="supositorios" datatype="html">
+        <source>Supositorio</source>
       </trans-unit>
     </body>
   </file>

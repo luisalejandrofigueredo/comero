@@ -1,10 +1,10 @@
-<h1 matDialogTitle>Lista de Medicamentos</h1>
+<h1 matDialogTitle i18n="@@lista_de_medicamentos">Lista de Medicamentos</h1>
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" #form="ngForm">
     <mat-dialog-content>
         @for (item of arrayMedicamentos; track $index; ) {
         <div class="row">
             <mat-form-field style="padding-left: 10px;">
-                <input matInput formControlName="medicamento{{$index}}" type="text" required placeholder="Medicamento">
+                <input matInput formControlName="medicamento{{$index}}" type="text" required i18n-placeholder="@@medicamento" placeholder="Medicamento">
                 <span matPrefix></span>
             </mat-form-field>
             <mat-form-field>
@@ -17,7 +17,7 @@
         }
     </mat-dialog-content>
     <mat-dialog-actions [attr.align]="'start'">
-        <button mat-button matDialogClose>Cerrar</button>
-        <button mat-button type="submit">Copiar a la historia</button>
+        <button mat-button matDialogClose i18n="@@cerrar">Cerrar</button>
+        <button mat-button type="submit" i18n="@@copiar_a_la_historia">Copiar a la historia</button>
     </mat-dialog-actions>
 </form>

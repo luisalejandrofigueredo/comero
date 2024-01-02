@@ -49,7 +49,7 @@ export class EditPacienteComponent implements OnInit, OnDestroy {
       pulse: this.profileForm.controls.pulse.value,
       oxygen: this.profileForm.controls.oxygen.value
     }).subscribe((next) => {
-      this.matSnackBar.open('Signos vitales actualizado', '', { duration: 500 })
+      this.matSnackBar.open($localize `:@@signos_vitales_act:Signos vitales actualizados`, '', { duration: 500 })
       this.router.navigate(['crudPaciente']);
     })
   }

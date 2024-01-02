@@ -8,7 +8,7 @@ import {Router  } from "@angular/router";
   styleUrl: './add-bed.component.css'
 })
 export class AddBedComponent {
-  public signosVitales:string[]=["Pulso","Presión","Oxigeno"];
+  public signosVitales:string[]=[$localize `:@@pulso:Pulso`,$localize `:@@presion:Presión`,$localize `:@@oxigeno:Oxígeno`];
   private confSerialService = inject(ConfSerialService);
   private router =inject(Router)
   profileForm = new FormGroup({
