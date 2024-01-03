@@ -13,7 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AddPatientComponent } from './add-patient/add-patient.component';
-import { MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -141,7 +141,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     provideFirestore(() => getFirestore()),
   ],
   providers: [provideHttpClient(),
-  { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true } },
+  { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true,hasBackdrop:false } as MatDialogConfig},
   { provide: MAT_DATE_LOCALE, useValue: 'sp-ES' },
   { provide: LOCALE_ID, useValue: 'en-US' },
   { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, {

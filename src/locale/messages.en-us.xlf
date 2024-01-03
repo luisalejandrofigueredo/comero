@@ -354,7 +354,7 @@
       </trans-unit>
       <trans-unit id="DD_MM_AAAA" datatype="html">
         <source>DD/MM/AAAA</source>
-        <target>MM/DD/AAAA</target>
+        <target>MM/DD/YYYY</target>
       </trans-unit>
       <trans-unit id="ingreso" datatype="html">
         <source>Ingreso</source>
@@ -379,6 +379,10 @@
       <trans-unit id="supositorios" datatype="html">
         <source>Supositorio</source>
         <target>Suppository</target>
+      </trans-unit>
+      <trans-unit id="desea_borrar_medicamento" datatype="html">
+        <source>¿Desea borrar al medicamento <x id="PH" equiv-text="name"/>?</source>
+        <target>You want to delete the medication <x id="PH" equiv-text="name"/>?</target>
       </trans-unit>
     </body>
   </file>

@@ -5,12 +5,15 @@
             @for (item of documents; track $index) {
             @if (item.uid !==this.authService.getUserData().uid) {
             <div class="row">
-                <button mat-mini-fab i18n-matTooltip="@@ver_mensajes" matTooltip="Ver mensajes" type="button" (click)="verMensajes(item.uid)">
+                <button mat-mini-fab i18n-matTooltip="@@ver_mensajes" matTooltip="Ver mensajes" type="button"
+                    (click)="verMensajes(item.uid)">
                     <div class="imagen-redondeada">
                         <img [src]="item.avatar" alt="">
                     </div>
                 </button>
-                <p style="padding-left: 20px;padding-right: 20px;">{{item.name}}</p>
+                <p i18n-matTooltip="@@ver_mensajes" matTooltip="Ver mensajes" (click)="verMensajes(item.uid)"
+                    style="padding-left: 20px;padding-right: 20px;"><span style="cursor: pointer;">{{item.name}}</span>
+                </p>
             </div>
             }
             }
@@ -18,7 +21,6 @@
     </mat-card-content>
 </mat-card>
 } @else {
-@defer () {
 <mat-card>
     <mat-card-content>
         <div class="row">
@@ -34,14 +36,16 @@
         </div>
         <form [formGroup]="profileForm" (ngSubmit)="enviar()">
             <div class="row">
-            <mat-form-field class="full-width" >
-                <input matInput i18n-placeholder="@@mensaje" placeholder="Mensaje" formControlName="message" >
-            </mat-form-field>
-            <span style="padding-top: 10px;padding-left: 20px;"><button mat-raised-button type="submit" i18n="@@enviar">Enviar</button></span>
-        </div>
+                <mat-form-field class="full-width">
+                    <input matInput i18n-placeholder="@@mensaje" placeholder="Mensaje" formControlName="message">
+                </mat-form-field>
+                <span style="padding-top: 10px;padding-left: 20px;"><button mat-raised-button type="submit"
+                        i18n="@@enviar">Enviar</button></span>
+            </div>
         </form>
     </mat-card-content>
 </mat-card>
+@defer () {
 <app-view-messages [from]="from" [to]="to"></app-view-messages>
 }
 @loading {

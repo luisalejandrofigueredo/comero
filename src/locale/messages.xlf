@@ -290,6 +290,9 @@
       <trans-unit id="supositorios" datatype="html">
         <source>Supositorio</source>
       </trans-unit>
+      <trans-unit id="desea_borrar_medicamento" datatype="html">
+        <source>¿Desea borrar al medicamento <x id="PH" equiv-text="name"/>?</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

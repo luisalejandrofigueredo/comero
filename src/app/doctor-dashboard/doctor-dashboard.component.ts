@@ -10,10 +10,13 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ZoomComponent  } from "../zoom/zoom.component";
 import { PatientDocument } from '../patient-document';
 import { Router } from '@angular/router';
+import { zoomAnimation } from '../effects/zoom.animation';
+
 @Component({
   selector: 'app-doctor-dashboard',
   templateUrl: './doctor-dashboard.component.html',
-  styleUrls: ['./doctor-dashboard.component.css']
+  styleUrls: ['./doctor-dashboard.component.css'],
+  animations: [zoomAnimation],
 })
 export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -31,6 +34,7 @@ export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
   public getFromDelete$:Observable<PatientDocument>=this.socket.fromEvent<PatientDocument>("deleteRecord");
   public getFromUpdate$:Observable<PatientDocument>=this.socket.fromEvent<PatientDocument>("updateRecord");
   public getFromInsert$:Observable<PatientDocument>=this.socket.fromEvent<PatientDocument>("insertRecord");
+  public zoomState = 'normal';
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['firstName','lastName', 'bloodPressureMin', 'bloodPressureMax', 'pulse','oxygen','zoom'];
@@ -86,6 +90,14 @@ export class DoctorDashboardComponent implements AfterViewInit, OnDestroy {
     this.subScriptionFromDelete$?.unsubscribe();
     this.subScriptionFromInsert$?.unsubscribe();
     this.subScriptionFromUpdate$?.unsubscribe();    
+  }
+
+  onHover() {
+    this.zoomState = (this.zoomState === 'normal' ? 'zoomed' : 'normal');
+  }
+
+  onLeave() {
+    this.zoomState = 'normal';
   }
 }
 

@@ -14,14 +14,14 @@
           <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="bloodPressureMin">
+        <ng-container  matColumnDef="bloodPressureMin">
           <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@minima">Mínima<span style="padding-left: 10px;"><span
                 class="material-symbols-outlined" style="color: red;">blood_pressure</span></span></th>
-          <td mat-cell *matCellDef="let row">{{row.bloodPressureMin}}</td>
+          <td  mat-cell *matCellDef="let row">{{row.bloodPressureMin}}</td>
         </ng-container>
 
 
-        <ng-container matColumnDef="bloodPressureMax">
+        <ng-container  matColumnDef="bloodPressureMax">
           <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@maxima">Máxima<span style="padding-left: 10px;"><span
                 class="material-symbols-outlined" style="color: red;">blood_pressure</span></span></th>
           <td mat-cell *matCellDef="let row">{{row.bloodPressureMax}}</td>
@@ -61,7 +61,7 @@
                   class="material-symbols-outlined">
                   oxygen_saturation
                 </span></span></span></th>
-          <td mat-cell *matCellDef="let row">{{row.oxygen}}</td>
+          <td  mat-cell *matCellDef="let row">{{row.oxygen}}</td>
         </ng-container>
         <ng-container matColumnDef="zoom">
           <th mat-header-cell *matHeaderCellDef>Zoom</th>

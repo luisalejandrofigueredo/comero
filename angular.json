@@ -23,7 +23,7 @@
         "sourceLocale": "es-UY",
         "locales": {
           "en": {
-            "translation": "src/locale/messages.en.xlf"
+            "translation": "src/locale/messages.en-us.xlf"
           }
         }
       },
@@ -58,6 +58,7 @@
               ]
             },
             "production": {
+              "localize":["en"],
               "budgets": [
                 {
                   "type": "initial",

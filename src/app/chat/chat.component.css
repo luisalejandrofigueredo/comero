@@ -10,8 +10,8 @@
 }
 
 .imagen-redondeada {
-    width: 25px; /* Ancho deseado */
-    height: 25px; /* Alto deseado */
+    width: 35px; /* Ancho deseado */
+    height: 35px; /* Alto deseado */
     border-radius: 50%; /* Se establece el radio al 50% para hacer la imagen completamente redonda */
     overflow: hidden; /* Esto asegura que la imagen se ajuste al borde redondeado */
   }
