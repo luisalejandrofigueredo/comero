@@ -46,6 +46,7 @@ import { HistoryComponent } from './history/history.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import {MatRippleModule} from '@angular/material/core';
 import { TableHistoryComponent } from './table-history/table-history.component';
 import localeEs from '@angular/common/locales/es';
 //import localeEN from "@angular/common/locales/en";
@@ -70,7 +71,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ConfSerialCrudComponent } from './conf-serial-crud/conf-serial-crud.component';
 import { AddBedComponent } from './add-bed/add-bed.component';
 import { EditBedComponent } from './edit-bed/edit-bed.component';
-
 
 registerLocaleData(localeEs, 'es-UY');
 //registerLocaleData(localeEN, 'en-US');
@@ -136,6 +136,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatDividerModule,
+    MatRippleModule,
     NgOptimizedImage,
     ScrollingModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

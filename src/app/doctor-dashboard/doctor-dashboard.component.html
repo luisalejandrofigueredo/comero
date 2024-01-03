@@ -1,7 +1,8 @@
 <h2 matCardTitle i18n="@@monitor_medico">Monitor médico</h2>
 <mat-card>
   <mat-card-content>
-    <div class="mat-elevation-z8">
+    <div class="mat-elevation-z8" matRipple [matRippleUnbounded]=true
+    [matRippleRadius]=10 [matRippleColor]="'rgba(255, 0, 0, 0.6)'">
       <table mat-table class="full-width-table" matSort aria-label="Elements">
 
         <ng-container matColumnDef="firstName">
