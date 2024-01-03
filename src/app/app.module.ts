@@ -39,6 +39,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
@@ -134,6 +135,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     MatCheckboxModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatDividerModule,
     NgOptimizedImage,
     ScrollingModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
