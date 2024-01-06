@@ -71,13 +71,14 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ConfSerialCrudComponent } from './conf-serial-crud/conf-serial-crud.component';
 import { AddBedComponent } from './add-bed/add-bed.component';
 import { EditBedComponent } from './edit-bed/edit-bed.component';
+import { TestSerialComponent } from './test-serial/test-serial.component';
 
 registerLocaleData(localeEs, 'es-UY');
 //registerLocaleData(localeEN, 'en-US');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomepageComponent,
     NavigatorComponent,
@@ -102,8 +103,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     ViewMessagesComponent,
     ConfSerialCrudComponent,
     AddBedComponent,
-    EditBedComponent
-  ],
+    EditBedComponent,
+      TestSerialComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
