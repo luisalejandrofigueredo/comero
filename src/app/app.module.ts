@@ -39,14 +39,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { AddMedicamentosComponent } from './add-medicamentos/add-medicamentos.component';
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { HistoryComponent } from './history/history.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import {MatRippleModule} from '@angular/material/core';
+import { MatRippleModule } from '@angular/material/core';
 import { TableHistoryComponent } from './table-history/table-history.component';
 import localeEs from '@angular/common/locales/es';
 //import localeEN from "@angular/common/locales/en";
@@ -72,13 +72,14 @@ import { ConfSerialCrudComponent } from './conf-serial-crud/conf-serial-crud.com
 import { AddBedComponent } from './add-bed/add-bed.component';
 import { EditBedComponent } from './edit-bed/edit-bed.component';
 import { TestSerialComponent } from './test-serial/test-serial.component';
-
+import { TestPythonComponent } from './test-python/test-python.component';
+import { pythonsocketService } from "./services/pythonsocket.service";
 registerLocaleData(localeEs, 'es-UY');
 //registerLocaleData(localeEN, 'en-US');
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCredentials: true } };
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HomepageComponent,
     NavigatorComponent,
@@ -104,8 +105,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     ConfSerialCrudComponent,
     AddBedComponent,
     EditBedComponent,
-      TestSerialComponent
-   ],
+    TestSerialComponent,
+    TestPythonComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -146,13 +148,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: { withCr
     provideFirestore(() => getFirestore()),
   ],
   providers: [provideHttpClient(),
-  { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true,hasBackdrop:false } as MatDialogConfig},
+  { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true, hasBackdrop: false } as MatDialogConfig },
   { provide: MAT_DATE_LOCALE, useValue: 'sp-ES' },
   { provide: LOCALE_ID, useValue: 'en-US' },
   { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, {
     provide: MatPaginatorIntl,
     useClass: CustomMatPaginatorIntl
-  }
+  },
+    pythonsocketService,
   ],
   bootstrap: [AppComponent]
 })

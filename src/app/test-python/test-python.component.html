@@ -1,0 +1,17 @@
+<mat-card>  
+<form [formGroup]="profileForm" (ngSubmit)="saveDialog()"  autocomplete="off">
+  <mat-form-field>
+    <input matInput type="number" placeholder="Pressure" formControlName="pressure">
+  </mat-form-field>
+  <p>Mean:{{mean}}</p>
+  <img src="assets/array.jpg">
+  <mat-card-actions align="end">
+    <button mat-button (click)="closeDialog()" i18n="@@cancelar" >Cancelar</button>
+    <button mat-button type="submit" [disabled]="!profileForm.valid" i18n="@@agregar" >Agregar</button>
+    <button mat-raised-button type="button" (click)="emit()">Calcular</button>
+</mat-card-actions>
+@for (item of pressure(); track $index) {
+  <p>{{item.pressure}}</p>
+}
+</form>
+</mat-card>

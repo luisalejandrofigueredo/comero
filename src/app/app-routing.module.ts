@@ -15,6 +15,7 @@ import { ChatComponent } from "./chat/chat.component";
 import { ConfSerialCrudComponent } from "./conf-serial-crud/conf-serial-crud.component";
 import { AddBedComponent } from "./add-bed/add-bed.component";
 import { EditBedComponent } from "./edit-bed/edit-bed.component";
+import {TestPythonComponent  } from "./test-python/test-python.component";
 const routes: Routes = [
   { component: CrudPacienteComponent, path: 'crudPaciente', canActivate: [AuthFirebaseGuard] },
   { component: EditPacienteComponent, path: 'editPaciente/:id/:tabIndex', canActivate: [AuthFirebaseGuard] },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { component: ChatComponent, path: 'chat', canActivate: [AuthFirebaseGuard] },
   { component: ConfSerialCrudComponent, path: 'confSerial', canActivate: [AuthFirebaseGuard] },
   { component: AddBedComponent, path: 'addBed', canActivate: [AuthFirebaseGuard] },
-  { component: EditBedComponent, path: 'editBed/:id', canActivate: [AuthFirebaseGuard] }
+  { component: EditBedComponent, path: 'editBed/:id', canActivate: [AuthFirebaseGuard] },
+  { component:TestPythonComponent,path:'testPython',canActivate:[AuthFirebaseGuard]}
 ];
 
 @NgModule({
