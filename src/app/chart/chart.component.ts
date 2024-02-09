@@ -8,11 +8,12 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css'],
   standalone:true,
-  imports:[CommonModule,MatDialogModule,MatButtonModule]
+  imports:[CommonModule,MatDialogModule,MatButtonModule],
+  providers:[{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { disableClose: true, hasBackdrop: true,enterAnimationDuration:1000 } as MatDialogConfig }]
 })
 export class ChartComponent implements OnInit {
 
-  constructor(private dialogRef:MatDialogRef<ChartComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data:string,private dialogRef:MatDialogRef<ChartComponent>) { }
 
   ngOnInit() {
   }
@@ -22,3 +23,4 @@ export class ChartComponent implements OnInit {
   }
 
 }
+

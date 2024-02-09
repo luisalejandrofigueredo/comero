@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-yes-no',
   standalone: true,
   imports: [CommonModule,MatDialogModule,MatButtonModule],
-  providers:[{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true,hasBackdrop:false } as MatDialogConfig}],
+  providers:[{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true,hasBackdrop:true } as MatDialogConfig}],
   templateUrl: './yes-no.component.html',
   styleUrl: './yes-no.component.css'
 })
