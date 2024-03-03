@@ -28,7 +28,7 @@ export class AuthService {
         setInterval(() => {
           user.getIdToken(true).then(() => {
             // El token ha sido refrescado
-          }).catch((error) => {
+          }).catch((_error) => {
             // Error al refrescar el token
           });
         }, 50 * 60 * 1000); // 50 minutos en milisegundos      }
